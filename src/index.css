@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small HUD particle background */
+.hud-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(255,190,64,0.9);
+  animation: float 6s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0.9; }
+  50% { transform: translateY(-40px) translateX(20px) scale(1.1); opacity: 0.6; }
+  100% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0.9; }
+}
+
+/* ironman glow */
+.iron-glow {
+  box-shadow: 0 0 18px rgba(192,36,40,0.5), inset 0 0 40px rgba(255,190,64,0.05);
+}
