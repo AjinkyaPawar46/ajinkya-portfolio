@@ -9,7 +9,8 @@ Author: Ajinkya Pawar
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-
+import headshot from '/assets/headshot.jpg';
+import cvPDF from '/assets/Ajinkya_CV.pdf';
 // -------------------- DATA --------------------
 const EDUCATION = {
   degree: 'B.Tech, Metallurgical Engineering & Materials Science (Minor: AI & Data Science)',
@@ -110,13 +111,13 @@ function Main() {
               <p className="mt-4 text-slate-300 max-w-2xl">CTO — IITB Racing Driverless · Rutgers Research Intern · B.Tech @ IIT Bombay. My work spans MPC, RL, SLAM and aerial robotics.</p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <a href="/Ajinkya_CV.pdf" className="px-4 py-2 rounded-md bg-red-700 hover:bg-red-600 text-white font-medium">Download CV</a>
+                <a href={cvPDF} className="px-4 py-2 rounded-md bg-red-700 hover:bg-red-600 text-white font-medium">Download CV</a>
                 <a href="#projects" className="px-4 py-2 rounded-md border border-slate-700 text-slate-200">See Projects</a>
               </div>
             </div>
 
-            <div className="w-44 h-44 rounded-xl bg-gradient-to-br from-slate-800 to-slate-700 border border-slate-700 flex items-center justify-center text-slate-400 shadow-2xl">
-              {<img src="/headshot.jpg" alt="Ajinkya" className="rounded-xl"/>}
+            <div className="w-44 h-44 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+              <img src={headshot} alt="Ajinkya Pawar" className="w-full h-full object-cover" />
             </div>
           </div>
         </section>
@@ -218,12 +219,12 @@ function Main() {
             </div>
             <div className="flex gap-3">
               <a href="https://www.linkedin.com/in/ajinkya-pawar-ap4630/" className="px-4 py-2 rounded-md bg-red-700 hover:bg-red-600 text-white">LinkedIn</a>
-              <a href="/Ajinkya_CV.pdf" className="px-4 py-2 rounded-md border border-slate-700 text-amber-300">CV (PDF)</a>
+              <a href={cvPDF} className="px-4 py-2 rounded-md bg-red-700 hover:bg-red-600 text-white font-medium">CV (PDF)</a>
             </div>
           </div>
         </section>
 
-        <footer className="py-6 text-center text-sm text-slate-500">© {new Date().getFullYear()} Ajinkya Pawar — Ironman-inspired portfolio. Built with React + Tailwind.</footer>
+        <footer className="py-6 text-center text-sm text-slate-500">© {new Date().getFullYear()} Ajinkya Pawar</footer>
       </main>
     </div>
   );
