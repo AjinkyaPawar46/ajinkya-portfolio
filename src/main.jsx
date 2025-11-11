@@ -4,13 +4,14 @@ File: main.jsx
 Author: Ajinkya Pawar
 */
 
-
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import headshot from '/assets/headshot.jpg';
-import cvPDF from '/assets/Ajinkya_CV.pdf';
+
+// IMPORTANT: Put your files in src/assets/
+import headshot from './assets/headshot.jpg';
+import cvPDF from './assets/Ajinkya_CV.pdf';
+
 // -------------------- DATA --------------------
 const EDUCATION = {
   degree: 'B.Tech, Metallurgical Engineering & Materials Science (Minor: AI & Data Science)',
@@ -69,9 +70,78 @@ const SKILLS = [
   'Python', 'C++', 'ROS', 'ROS2', 'MATLAB', 'PyTorch', 'PyBullet', 'Gazebo', 'MPC', 'RL', 'SLAM', 'Computer Vision', 'TensorRT'
 ];
 
+// -------------------- SMALL HUD PARTICLES (React) --------------------
+function HUDParticles({ enabled }) {
+  // renders lightweight particles only when enabled
+  const [particles] = useState(() =>
+    Array.from({ length: 10 }).map(() => ({
+      left: 10 + Math.random() * 80 + '%',
+      top: 10 + Math.random() * 60 + '%',
+      delay: Math.random() * 4 + 's',
+      scale: 0.6 + Math.random() * 1.2
+    }))
+  );
+
+  if (!enabled) return null;
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+      {particles.map((p, i) => (
+        <div
+          key={i}
+          style={{
+            position: 'absolute',
+            left: p.left,
+            top: p.top,
+            width: 6,
+            height: 6,
+            borderRadius: 999,
+            boxShadow: '0 0 8px rgba(255,190,64,0.95)',
+            background: 'radial-gradient(circle at 30% 30%, rgba(255,190,64,0.95), rgba(192,36,40,0.8))',
+            transform: `scale(${p.scale})`,
+            animation: `hud-float 6s linear ${p.delay} infinite`,
+            opacity: 0.95,
+          }}
+        />
+      ))}
+      <style>{`
+        @keyframes hud-float {
+          0% { transform: translateY(0) translateX(0) scale(1); opacity:0.95; }
+          50% { transform: translateY(-28px) translateX(14px) scale(1.06); opacity:0.6; }
+          100% { transform: translateY(0) translateX(0) scale(1); opacity:0.95; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// -------------------- ARC REACTOR SVG (subtle glow) --------------------
+function ArcReactor() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center -z-10 pointer-events-none">
+      <svg width="260" height="260" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-50">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="50%">
+            <stop offset="0%" stopColor="#ffbf5a" stopOpacity="0.15" />
+            <stop offset="60%" stopColor="#c02428" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="#000000" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="130" cy="130" r="90" fill="url(#g1)"></circle>
+      </svg>
+    </div>
+  );
+}
+
 // -------------------- MAIN COMPONENT --------------------
 function Main() {
   const [search, setSearch] = useState('');
+  const [hudEnabled, setHudEnabled] = useState(true);
+
+  useEffect(() => {
+    // ensure dark class present for tailwind if used elsewhere
+    try { document.documentElement.classList.add('dark'); } catch (e) {}
+  }, []);
 
   const filteredProjects = PROJECTS.filter(p =>
     p.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -79,9 +149,12 @@ function Main() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-neutral-900 to-black text-slate-100 antialiased">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-neutral-900 to-black text-slate-100 antialiased relative overflow-hidden">
+      {/* HUD layer */}
+      <HUDParticles enabled={hudEnabled} />
+
       {/* HEADER */}
-      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between relative z-10">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-red-700 to-amber-400 flex items-center justify-center shadow-lg">
             <span className="font-mono text-lg">AP</span>
@@ -91,24 +164,37 @@ function Main() {
             <p className="text-sm text-slate-300">Motion-planning & Controls Engineer · Robotics Researcher</p>
           </div>
         </div>
-        <nav className="flex gap-3 text-sm">
-          <a href="#education" className="px-3 py-1 rounded-md hover:bg-slate-800">Education</a>
-          <a href="#experience" className="px-3 py-1 rounded-md hover:bg-slate-800">Experience</a>
-          <a href="#publications" className="px-3 py-1 rounded-md hover:bg-slate-800">Publications</a>
-          <a href="#projects" className="px-3 py-1 rounded-md hover:bg-slate-800">Projects</a>
-          <a href="#skills" className="px-3 py-1 rounded-md hover:bg-slate-800">Skills</a>
-          <a href="#contact" className="px-3 py-1 rounded-md hover:bg-slate-800">Contact</a>
-        </nav>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setHudEnabled(v => !v)}
+            className={`px-3 py-1 rounded-md text-sm border ${hudEnabled ? 'bg-amber-300/10 border-amber-300 text-amber-300' : 'border-slate-700'}`}
+            aria-pressed={hudEnabled}
+            title="Toggle HUD"
+          >
+            {hudEnabled ? 'HUD On' : 'HUD Off'}
+          </button>
+          <a href={cvPDF} className="px-3 py-1 rounded-md bg-red-700 text-white text-sm">CV</a>
+        </div>
       </header>
 
-      {/* BODY */}
-      <main className="max-w-6xl mx-auto px-6 pb-20">
+      {/* MAIN CONTENT */}
+      <main className="max-w-6xl mx-auto px-6 pb-20 relative z-10">
         {/* HERO */}
-        <section className="bg-gradient-to-r from-slate-800/60 to-slate-900/40 border border-slate-800 rounded-3xl p-8 mb-8 shadow-xl backdrop-blur-md">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+        <section className="bg-gradient-to-r from-slate-800/60 to-slate-900/40 border border-slate-800 rounded-3xl p-8 mb-8 shadow-xl backdrop-blur-md relative overflow-hidden">
+          {/* Arc reactor behind avatar */}
+          <div className="absolute right-8 top-8 w-64 h-64 md:w-72 md:h-72 opacity-60 pointer-events-none">
+            <ArcReactor />
+          </div>
+
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 relative">
             <div className="flex-1">
-              <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">I build high-performance perception, planning & control systems for robots.</h2>
-              <p className="mt-4 text-slate-300 max-w-2xl">CTO — IITB Racing Driverless · Rutgers Research Intern · B.Tech @ IIT Bombay. My work spans MPC, RL, SLAM and aerial robotics.</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">
+                I build high-performance perception, planning & control systems for robots.
+              </h2>
+              <p className="mt-4 text-slate-300 max-w-2xl">
+                CTO — IITB Racing Driverless · Rutgers Research Intern · B.Tech @ IIT Bombay. My work spans MPC, RL, SLAM and aerial robotics.
+              </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a href={cvPDF} className="px-4 py-2 rounded-md bg-red-700 hover:bg-red-600 text-white font-medium">Download CV</a>
@@ -116,14 +202,14 @@ function Main() {
               </div>
             </div>
 
-            <div className="w-44 h-44 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+            <div className="w-44 h-44 rounded-xl overflow-hidden border border-slate-700 shadow-2xl relative">
               <img src={headshot} alt="Ajinkya Pawar" className="w-full h-full object-cover" />
             </div>
           </div>
         </section>
 
         {/* EDUCATION */}
-        <section id="education" className="mb-8">
+        <section id="education" className="mb-8 relative z-10">
           <h3 className="text-2xl font-semibold">Education</h3>
           <div className="mt-4 bg-slate-800 border border-slate-700 rounded-2xl p-6">
             <div className="flex items-start justify-between">
@@ -138,7 +224,7 @@ function Main() {
         </section>
 
         {/* EXPERIENCE */}
-        <section id="experience" className="mb-8">
+        <section id="experience" className="mb-8 relative z-10">
           <h3 className="text-2xl font-semibold">Professional Experience</h3>
           <div className="mt-4 space-y-4">
             {EXPERIENCE.map((e, i) => (
@@ -159,7 +245,7 @@ function Main() {
         </section>
 
         {/* PUBLICATIONS */}
-        <section id="publications" className="mb-8">
+        <section id="publications" className="mb-8 relative z-10">
           <h3 className="text-2xl font-semibold">Publications</h3>
           <div className="mt-4 space-y-3">
             {PUBLICATIONS.map((p, i) => (
@@ -175,7 +261,7 @@ function Main() {
         </section>
 
         {/* PROJECTS */}
-        <section id="projects" className="mb-8">
+        <section id="projects" className="mb-8 relative z-10">
           <div className="flex items-center justify-between">
             <h3 className="text-2xl font-semibold">Projects</h3>
             <div className="flex items-center gap-3">
@@ -196,7 +282,7 @@ function Main() {
         </section>
 
         {/* SKILLS */}
-        <section id="skills" className="mb-8">
+        <section id="skills" className="mb-8 relative z-10">
           <h3 className="text-2xl font-semibold">Skills</h3>
           <div className="mt-4 bg-slate-800 border border-slate-700 rounded-2xl p-6">
             <div className="flex flex-wrap gap-3">
@@ -208,7 +294,7 @@ function Main() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="mb-12">
+        <section id="contact" className="mb-12 relative z-10">
           <h3 className="text-2xl font-semibold">Contact</h3>
           <div className="mt-4 bg-slate-800 border border-slate-700 rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -224,7 +310,7 @@ function Main() {
           </div>
         </section>
 
-        <footer className="py-6 text-center text-sm text-slate-500">© {new Date().getFullYear()} Ajinkya Pawar</footer>
+        <footer className="py-6 text-center text-sm text-slate-500 relative z-10">© {new Date().getFullYear()} Ajinkya Pawar</footer>
       </main>
     </div>
   );
