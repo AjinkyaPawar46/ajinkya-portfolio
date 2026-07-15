@@ -13,6 +13,15 @@ export const profile = {
   },
 };
 
+// Hero background video. To swap it: edit the `hero` entry's `src` in
+// scripts/media.manifest.mjs, run `npm run media:hero`, and this record
+// never needs to change — the output filename stays hero.mp4/-poster.jpg.
+export const heroMedia = {
+  video: 'media/hero/hero.mp4',
+  poster: 'media/hero/hero-poster.jpg',
+  alt: 'IITB Racing driverless car at the start line, cone track ahead',
+};
+
 export const researchInterests = [
   'Autonomous Driving',
   'Learning-Based Control',
@@ -66,7 +75,7 @@ export const publications = [
     authors: 'K. Boyalakuntla, A. Pawar, A. Boluarias, J. Yu',
     title: 'Rapid Object Retrieval from Dense Clutter via Reactive RL Policies',
     venue: 'Submitted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)',
-    link: null,
+    link: 'https://cprl-26.github.io',
   },
   {
     authors: 'Y. Rampuria et al.',
@@ -151,6 +160,170 @@ export const professionalExperience = {
     'Designed and delivered comprehensive lesson plans catering to various learning styles and academic backgrounds',
   ],
 };
+
+// Media-rich case studies, rendered as cards on the page that open into a
+// full-screen modal. Order is deliberate: Racing leads (autonomous driving +
+// leadership + externally validated), Rutgers second (strongest pure-research
+// credential — IROS submission, live project page), Aerial thesis third
+// (rich media, but overlaps Racing on controls and is promoted out of
+// BeyondTheLab mainly for its thesis status). `detail` points at the
+// existing bullet-list exports above rather than duplicating their copy.
+//
+// Media items: { type: 'image' | 'video', src, poster?, caption }. `src` /
+// `poster` are paths under public/media/ (no leading slash) — components
+// resolve them through mediaUrl(). Aerial media is restricted to the
+// verified-clean "safe set" (BTP2 Presentation/ + 5 uniquely-Ajinkya
+// figures) — see the plan for the attribution reasoning; do not add media
+// from the shared Ajinkya_BTP/DDP__Dhruvi_Joshi figure pool.
+export const caseStudies = [
+  {
+    id: 'iitb-racing',
+    title: "India's First Autonomous Racecar",
+    role: 'Chief Autonomous Systems Officer & Deputy Team Leader',
+    org: 'IITB Racing',
+    duration: 'Mar 2023 – Jul 2026',
+    guide: 'Prof. Archak Mittal, Civil Engineering, IIT Bombay',
+    summary:
+      'Leading the Level-4 autonomous vehicle division building India\'s first autonomous EV racecar — NMPC, SLAM, perception and path planning for the Formula Student AI circuit.',
+    poster: { src: 'media/racing/e14.webp', alt: 'IITB Racing E11 electric racecar in the pit lane at Formula Student AI, United Kingdom' },
+    metrics: [
+      { label: 'Lap-time gain', value: '15%' },
+      { label: "FS-AI '25", value: '4th / 25' },
+      { label: 'Cross-track error', value: '-16%' },
+      { label: 'Detection latency', value: '100ms → 7ms' },
+    ],
+    tech: ['NMPC', 'ROS', 'CARLA', 'RRT*', 'LiDAR', 'TensorRT', 'YOLOv5'],
+    detail: technicalHighlight,
+    sections: [
+      {
+        heading: 'The Car',
+        body: 'India\'s 1st autonomous EV racecar, integrated with vision, SLAM, path planning and controls — plus a 1/6th-scale driverless prototype used for rapid iteration on the full autonomy stack.',
+        media: [
+          { type: 'image', src: 'media/racing/car.webp', alt: 'E77 driverless racecar with LiDAR and stereo camera sensor stack mounted on the nose', caption: 'E77 driverless car — LiDAR + stereo camera sensor stack' },
+          { type: 'image', src: 'media/racing/dv-bot.webp', alt: '1/6th scale driverless prototype with Velodyne LiDAR on a cone track', caption: '1/6th-scale prototype on a cone track, Velodyne LiDAR + stereo cams' },
+          { type: 'image', src: 'media/racing/team.webp', alt: 'IITB Racing driverless team group photo', caption: 'The driverless division team' },
+        ],
+      },
+      {
+        heading: 'Planning & Control',
+        body: 'A Nonlinear Model Predictive Controller using a dynamic bicycle model for lap-time-optimal trajectory tracking, paired with a Delaunay Triangulation + RRT* path planning framework for real-time adaptability on dynamic tracks.',
+        media: [
+          { type: 'video', src: 'media/racing/mpc-sim.mp4', poster: 'media/racing/mpc-sim-poster.jpg', alt: 'NMPC trajectory tracking simulation', caption: 'NMPC trajectory tracking simulation' },
+          { type: 'video', src: 'media/racing/rrt.mp4', poster: 'media/racing/rrt-poster.jpg', alt: 'RRT* path planning simulation', caption: 'RRT* path planning' },
+          { type: 'image', src: 'media/racing/delaunay.webp', alt: 'Delaunay triangulation visibility graph diagram', caption: 'Delaunay triangulation visibility graph' },
+          { type: 'image', src: 'media/racing/rrt-diagram.webp', alt: 'RRT* algorithm diagram', caption: 'RRT* trajectory planning' },
+        ],
+      },
+      {
+        heading: 'Perception',
+        body: 'A ROS-integrated perception stack fusing LiDAR, camera and IMU: ground removal, DBSCAN clustering, Camera-LiDAR transformation, and a monocular depth estimation network alongside a TensorRT-optimized YOLOv5 cone detector.',
+        media: [
+          { type: 'video', src: 'media/racing/bot-run.mp4', poster: 'media/racing/bot-run-poster.jpg', alt: 'Prototype cone-track run using the perception + planning stack', caption: 'Prototype run on the cone track' },
+          { type: 'image', src: 'media/racing/fusion-pipeline.webp', alt: 'Sensor fusion pipeline diagram', caption: 'LiDAR–camera sensor fusion pipeline' },
+          { type: 'image', src: 'media/racing/stereo-flowchart.webp', alt: 'Stereo vision processing flowchart', caption: 'Stereo vision pipeline' },
+          { type: 'image', src: 'media/racing/nn-architecture.webp', alt: 'Depth estimation neural network architecture diagram', caption: 'Monocular depth estimation network' },
+          { type: 'image', src: 'media/racing/fastslam.webp', alt: 'FastSLAM predicted vs. ground-truth map comparison', caption: 'FastSLAM: predicted vs. ground-truth map' },
+          { type: 'image', src: 'media/racing/graphslam.webp', alt: 'GraphSLAM predicted vs. ground-truth map comparison', caption: 'GraphSLAM: predicted vs. ground-truth map' },
+        ],
+      },
+    ],
+    links: [{ label: 'Formula Student AI paper', href: 'https://arxiv.org/pdf/2408.06113' }],
+  },
+  {
+    id: 'rutgers-arc-lab',
+    title: 'Rapid Object Retrieval from Dense Clutter',
+    role: 'Robotics Research Intern',
+    org: 'ARC Lab, Computer Science, Rutgers University–New Brunswick',
+    duration: 'Apr 2025 – Jul 2025',
+    guide: 'Prof. Jingjin Yu',
+    summary:
+      'A Transformer-based push-prediction model and reactive RL policy for retrieving target objects from dense clutter — submitted to IROS 2026.',
+    poster: { src: 'media/rutgers/figure1.webp', alt: 'CPRL method figure: reactive RL policy retrieving an object from clutter' },
+    metrics: [
+      { label: 'Push-prediction accuracy', value: '+40%' },
+      { label: 'Venue', value: 'IROS 2026' },
+      { label: 'Platform', value: '6-DoF UR5e' },
+    ],
+    tech: ['PyTorch', 'Transformer', 'Reinforcement Learning', 'Isaac Gym', 'UR5e'],
+    detail: researchExperience,
+    sections: [
+      {
+        heading: 'Approach',
+        body: 'Replaced an MLP-based push interaction predictor with a Transformer model, improving accuracy by over 40% and generalizing to diverse cluttered scenes with variable object configurations.',
+        media: [
+          { type: 'image', src: 'media/rutgers/pipeline.webp', alt: 'CPRL pipeline diagram', caption: 'Push-prediction and retrieval pipeline' },
+          { type: 'image', src: 'media/rutgers/architecture.webp', alt: 'System architecture diagram', caption: 'System architecture' },
+        ],
+      },
+      {
+        heading: 'Results',
+        body: 'Validated through extensive simulation in Isaac Gym and real-world experiments on a 6-DoF UR5e arm, across diverse clutter configurations.',
+        media: [
+          { type: 'video', src: 'media/rutgers/case02.mp4', poster: 'media/rutgers/case02-poster.jpg', alt: 'Object retrieval from clutter, case 2', caption: 'Retrieval case 02' },
+          { type: 'video', src: 'media/rutgers/case04.mp4', poster: 'media/rutgers/case04-poster.jpg', alt: 'Object retrieval from clutter, case 4', caption: 'Retrieval case 04' },
+          { type: 'video', src: 'media/rutgers/case12.mp4', poster: 'media/rutgers/case12-poster.jpg', alt: 'Object retrieval from clutter, case 12', caption: 'Retrieval case 12' },
+          { type: 'video', src: 'media/rutgers/case13.mp4', poster: 'media/rutgers/case13-poster.jpg', alt: 'Object retrieval from clutter, case 13', caption: 'Retrieval case 13' },
+        ],
+      },
+    ],
+    links: [{ label: 'Project page', href: 'https://cprl-26.github.io' }],
+  },
+  {
+    id: 'aerial-manipulator',
+    title: 'Contact Force Control of an Aerial Manipulator',
+    role: 'Undergraduate Thesis',
+    org: 'INDUS Lab, Mechanical Engineering, IIT Bombay',
+    duration: 'Jan 2025 – May 2026',
+    guide: 'Prof. Vivek Sangwan',
+    summary:
+      'Design and control of an autonomous quadcopter with an under-actuated linked manipulator, for contact-force applications like debris removal and door/window opening in disaster response.',
+    poster: { src: 'media/aerial/drone.webp', alt: 'Quadcopter with linked aerial manipulator on the lab floor' },
+    metrics: [
+      { label: 'Steady-state error', value: '<2%' },
+      { label: 'Settling time', value: '<5s' },
+      { label: 'Inner-loop speed', value: '10x' },
+      { label: 'Chassis weight', value: '-10%' },
+    ],
+    tech: ['ArduPilot', 'Gazebo', 'MATLAB', 'VICON', 'PID'],
+    detail: aerialRoboticsThesis,
+    sections: [
+      {
+        heading: 'Hardware',
+        body: 'An under-actuated linked manipulator mounted on a custom quadcopter, with a lightweight carbon-fiber chassis redesign that cut total weight by 10% and reduced vibration-induced sensor noise.',
+        media: [
+          { type: 'image', src: 'media/aerial/drone.webp', alt: 'Quadcopter with aerial manipulator', caption: 'Quadcopter with linked aerial manipulator' },
+          { type: 'image', src: 'media/aerial/drone-bot.webp', alt: 'Quadcopter and ground robot together', caption: 'Aerial and ground platforms' },
+          { type: 'image', src: 'media/aerial/bot.webp', alt: 'Ground robot platform', caption: 'Ground robot platform' },
+          { type: 'image', src: 'media/aerial/chassis.webp', alt: 'Carbon-fiber chassis redesign', caption: 'Carbon-fiber chassis redesign' },
+        ],
+      },
+      {
+        heading: 'Flight',
+        body: 'Hover and helical/straight-line trajectory tracking with precise PID tuning, using VICON motion capture for high-accuracy indoor localization.',
+        media: [
+          { type: 'video', src: 'media/aerial/drone-flying.mp4', poster: 'media/aerial/drone-flying-poster.jpg', alt: 'Quadcopter flight test', caption: 'Flight test', portrait: true },
+          { type: 'video', src: 'media/aerial/bot-running.mp4', poster: 'media/aerial/bot-running-poster.jpg', alt: 'Ground robot test run', caption: 'Ground platform test run', portrait: true },
+          { type: 'video', src: 'media/aerial/bot-perspective.mp4', poster: 'media/aerial/bot-perspective-poster.jpg', alt: 'Robot-perspective test run', caption: 'Robot-perspective view', portrait: true },
+        ],
+      },
+      {
+        heading: 'Control & Trajectories',
+        body: 'Outer-loop control tuned via MATLAB/Gazebo simulation with a 10x faster attitude inner-loop; 3D spline-based path planning for helical and straight-line trajectories.',
+        media: [
+          { type: 'image', src: 'media/aerial/traj-helix.webp', alt: 'Helical trajectory tracking plot', caption: 'Helical trajectory tracking' },
+          { type: 'image', src: 'media/aerial/traj-line.webp', alt: 'Straight-line trajectory tracking plot', caption: 'Straight-line trajectory tracking' },
+          { type: 'image', src: 'media/aerial/quad-coords-helix.webp', alt: 'Quadcopter coordinates during helical flight', caption: 'Quadcopter coordinates — helical flight' },
+          { type: 'image', src: 'media/aerial/quad-coords-line.webp', alt: 'Quadcopter coordinates during straight-line flight', caption: 'Quadcopter coordinates — straight-line flight' },
+          { type: 'image', src: 'media/aerial/x-flight.webp', alt: 'X-axis flight response plot', caption: 'X-axis response' },
+          { type: 'image', src: 'media/aerial/y-flight.webp', alt: 'Y-axis flight response plot', caption: 'Y-axis response' },
+          { type: 'image', src: 'media/aerial/z-flight.webp', alt: 'Z-axis flight response plot', caption: 'Z-axis response' },
+          { type: 'image', src: 'media/aerial/z-ramp.webp', alt: 'Z-axis ramp response plot', caption: 'Z-axis ramp response' },
+        ],
+      },
+    ],
+    links: [],
+  },
+];
 
 // Fixed chip order — not derived from `projects` so it stays stable regardless of data edits.
 export const PROJECT_TAGS = ['Robotics', 'Computer Vision', 'ML & Data Science'];

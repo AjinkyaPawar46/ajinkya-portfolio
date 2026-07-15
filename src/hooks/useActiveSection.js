@@ -16,7 +16,10 @@ export function useActiveSection(sectionIds) {
       (entries) => {
         const visible = entries.filter((entry) => entry.isIntersecting);
         if (visible.length > 0) {
-          setActiveId(visible[0].target.id);
+          // pick whichever tracked section has the most overlap with the
+          // rootMargin-narrowed viewport band, i.e. nearest the center
+          const nearest = visible.reduce((a, b) => (b.intersectionRatio > a.intersectionRatio ? b : a));
+          setActiveId(nearest.target.id);
         }
       },
       { rootMargin: '-40% 0px -55% 0px', threshold: 0 }

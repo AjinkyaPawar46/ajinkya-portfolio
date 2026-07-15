@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build && node scripts/sync-docs.mjs",
     "sync-docs": "node scripts/sync-docs.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "media": "node scripts/build-media.mjs",
+    "media:hero": "node scripts/build-media.mjs --only hero"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",

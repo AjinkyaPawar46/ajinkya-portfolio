@@ -8,12 +8,12 @@ const GROUPS = [
 
 export function CoursesList() {
   return (
-    <div className="border border-slate-800 rounded-xl p-4 space-y-3">
-      <div className="font-medium text-slate-200">Relevant Courses</div>
+    <div className="border border-line rounded-xl p-4 space-y-3">
+      <div className="font-medium text-zinc-300">Relevant Courses</div>
       {GROUPS.map(({ key, label }) => (
         <div key={key} className="text-sm">
-          <span className="text-slate-400 font-medium">{label}: </span>
-          <span className="text-slate-500">{courses[key].join(', ')}</span>
+          <span className="text-zinc-500 font-medium">{label}: </span>
+          <span className="text-zinc-500">{courses[key].join(', ')}</span>
         </div>
       ))}
     </div>

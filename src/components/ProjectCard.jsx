@@ -13,16 +13,16 @@ export const ProjectCard = forwardRef(function ProjectCard({ project }, ref) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className="p-5 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700"
+      className="p-5 rounded-2xl bg-ink-900 border border-line"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="font-medium">{project.title}</div>
-        <span className="shrink-0 text-xs px-2 py-1 rounded-full border border-amber-300/40 text-amber-300">
+        <span className="shrink-0 text-xs px-2 py-1 rounded-full border border-accent/40 text-accent font-mono">
           {project.tag}
         </span>
       </div>
-      <p className="text-xs text-slate-500 mt-1">{project.duration}</p>
-      <ul className="mt-3 list-disc ml-5 space-y-1 text-sm text-slate-300">
+      <p className="text-xs text-zinc-500 mt-1 font-mono">{project.duration}</p>
+      <ul className="mt-3 list-disc ml-5 space-y-1 text-sm text-zinc-400">
         {project.bullets.map((bullet, i) => (
           <li key={i}>{bullet}</li>
         ))}

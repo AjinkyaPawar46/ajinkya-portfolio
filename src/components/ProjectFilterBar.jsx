@@ -9,14 +9,14 @@ export function ProjectFilterBar({ tags, activeTag, onSelect }) {
           <button
             key={tag}
             onClick={() => onSelect(tag)}
-            className={`relative px-3 py-1.5 rounded-full text-sm border transition-colors ${
-              isActive ? 'text-slate-950 border-transparent' : 'text-slate-300 border-slate-700 hover:border-amber-300 hover:text-amber-300'
+            className={`relative px-3 py-1.5 rounded-full text-sm border transition-colors font-mono ${
+              isActive ? 'text-ink-950 border-transparent' : 'text-zinc-400 border-line hover:border-accent hover:text-accent'
             }`}
           >
             {isActive && (
               <motion.span
                 layoutId="project-filter-pill"
-                className="absolute inset-0 rounded-full bg-amber-300"
+                className="absolute inset-0 rounded-full bg-accent"
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
               />
             )}

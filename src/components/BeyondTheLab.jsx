@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AerialRoboticsCard } from './AerialRoboticsCard';
 import { ProfessionalExperienceCard } from './ProfessionalExperienceCard';
 import { PositionsOfResponsibility } from './PositionsOfResponsibility';
 import { CoursesList } from './CoursesList';
@@ -14,13 +13,13 @@ export function BeyondTheLab() {
       <button
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="w-full flex items-center justify-between gap-4 bg-slate-900/60 border border-slate-800 rounded-2xl px-6 py-4 text-left hover:border-slate-700"
+        className="w-full flex items-center justify-between gap-4 bg-ink-900/60 border border-line rounded-2xl px-6 py-4 text-left hover:border-zinc-600 transition-colors"
       >
         <div>
-          <h3 className="text-lg font-semibold text-slate-300">Beyond the Lab</h3>
-          <p className="text-sm text-slate-500">Aerial robotics, teaching, positions of responsibility, coursework &amp; more</p>
+          <h3 className="text-lg font-semibold text-zinc-400">Beyond the Lab</h3>
+          <p className="text-sm text-zinc-500">Teaching, positions of responsibility, coursework &amp; more</p>
         </div>
-        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }} className="text-slate-500 text-xl">
+        <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }} className="text-zinc-500 text-xl">
           ⌄
         </motion.span>
       </button>
@@ -35,7 +34,6 @@ export function BeyondTheLab() {
             className="overflow-hidden"
           >
             <div className="mt-3 space-y-3">
-              <AerialRoboticsCard />
               <ProfessionalExperienceCard />
               <PositionsOfResponsibility />
               <CoursesList />
