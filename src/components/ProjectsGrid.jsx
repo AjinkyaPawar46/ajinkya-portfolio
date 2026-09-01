@@ -17,7 +17,7 @@ export function ProjectsGrid() {
   );
 
   return (
-    <Section id="projects">
+    <Section id="projects" band="raised">
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
         <SectionHeading
           eyebrow="Side builds"

@@ -16,6 +16,12 @@
   html,
   body {
     background-color: #08090c;
+    /* The case-study modal is portalled to <body>, which sits OUTSIDE the
+       #top wrapper carrying `text-zinc-100`. Without a colour here, every
+       element in the modal that doesn't set one explicitly (the title, the
+       section headings) inherits the UA default — black on a dark panel.
+       Set it at the root so anything portalled is covered by default. */
+    color: #f4f4f5;
   }
 
   body {

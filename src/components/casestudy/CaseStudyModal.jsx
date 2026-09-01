@@ -92,7 +92,7 @@ export function CaseStudyModal({ caseStudy, onClose }) {
               <div className="flex flex-wrap gap-2">
                 {caseStudy.metrics.map((m) => (
                   <span key={m.label} className="text-xs font-mono px-3 py-1.5 rounded-full border border-line">
-                    <span className="text-accent font-semibold">{m.value}</span>{' '}
+                    <span className={m.tone === "gold" ? "text-gold font-semibold" : "text-accent font-semibold"}>{m.value}</span>{' '}
                     <span className="text-zinc-400">{m.label}</span>
                   </span>
                 ))}

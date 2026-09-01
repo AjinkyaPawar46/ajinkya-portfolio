@@ -25,10 +25,10 @@ export function App() {
         <Hero />
         <ImpactStrip />
         <CaseStudySection />
-        <ProjectsGrid />
         <Publications />
         <Timeline />
         <Awards />
+        <ProjectsGrid />
         <Skills />
         <BeyondTheLab />
         <Contact />

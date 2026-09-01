@@ -34,7 +34,7 @@ function Authors({ value }) {
 
 export function Publications() {
   return (
-    <Section id="publications" band="raised">
+    <Section id="publications">
       <SectionHeading
         eyebrow="Writing"
         title="Publications"

@@ -19,7 +19,7 @@ export const profile = {
 export const heroMedia = {
   video: 'media/hero/hero.mp4',
   poster: 'media/hero/hero-poster.jpg',
-  alt: 'IITB Racing driverless car at the start line, cone track ahead',
+  alt: "IITB Racing autonomy stack running: cone-detection camera feeds, the bird's-eye planning view, and the E03 driverless car on a cone track",
 };
 
 export const researchInterests = [
@@ -39,16 +39,17 @@ export const researchInterests = [
 // display, `detail` the qualifying line beneath it.
 export const achievements = [
   {
+    title: "Overall Champions — Formula Student Portugal '26",
+    stat: '1st',
+    detail:
+      "Won both the Driverless Cup and the EV Category as India's 1st and only contingent, plus 1st in the Engineering Design Presentation",
+    featured: true,
+  },
+  {
     title: 'IIT Bombay Undergraduate Research Award',
     stat: '2025',
     detail:
       'For integrated perception pipelines & MPC systems improving autonomous racing reliability',
-    featured: true,
-  },
-  {
-    title: "Formula Student AI '24, United Kingdom",
-    stat: '1st',
-    detail: 'Represented the 1st and only Indian contingent among 80+ teams',
     featured: true,
   },
   {
@@ -71,8 +72,8 @@ export const achievements = [
 // six lead. `tone` follows the site-wide rule: accent (cyan) for
 // quantitative/technical, gold (amber) for recognition.
 export const impactStats = [
+  { value: '1st', suffix: 'overall', label: "FS Portugal '26 — Driverless & EV", tone: 'gold' },
   { value: '4th', suffix: '/ 25', label: "Formula Student AI '25, UK", tone: 'gold' },
-  { value: '1st', label: 'Indian driverless contingent', tone: 'gold' },
   { value: '100+', label: 'Students led as CTO', tone: 'gold' },
   { value: '15%', label: 'NMPC lap-time gain', tone: 'accent' },
   { value: '100→7', suffix: 'ms', label: 'Detection latency, TensorRT', tone: 'accent' },
@@ -103,6 +104,8 @@ export const technicalHighlight = {
   summary:
     "Leading the Level-4 autonomous vehicle division in a team of 100+ students, representing India as the 1st and only Indian self-driving EV racecar contingent among 80+ teams at IMechE Formula Student AI, United Kingdom.",
   impact: [
+    "Secured 1st place overall at Formula Student Portugal '26 — winning both the Driverless Cup and the EV Category",
+    "Secured 1st place in the Engineering Design Presentation at FSPT '26, evaluated by AV industry experts",
     "Responsible for India's 1st autonomous EV racecar integrated with vision, SLAM, path planning and controls",
     "Secured 4th place among 25 teams at Formula Student AI '25, a 7-place jump from the previous year",
     "Won 3rd prize in Real World Artificial Intelligence for global AV sector analysis at Formula Student AI '23",
@@ -193,19 +196,20 @@ export const caseStudies = [
     duration: 'Mar 2023 – Jul 2026',
     guide: 'Prof. Archak Mittal, Civil Engineering, IIT Bombay',
     summary:
-      'Leading the Level-4 autonomous vehicle division building India\'s first autonomous EV racecar — NMPC, SLAM, perception and path planning for the Formula Student AI circuit.',
+      "Leading the Level-4 autonomous vehicle division building India's first autonomous EV racecar — NMPC, SLAM, perception and path planning. Overall Champions at Formula Student Portugal '26 in both the Driverless and EV categories.",
     poster: { src: 'media/racing/e14.webp', alt: 'IITB Racing E11 electric racecar in the pit lane at Formula Student AI, United Kingdom' },
     // The clip that autoplays inline in this case study's feature band.
     // Distinct from `poster` (still used as the modal header image) and from
     // `sections[].media` (the deep-dive gallery).
     featureMedia: {
-      src: 'media/racing/bot-run.mp4',
-      poster: 'media/racing/bot-run-poster.jpg',
-      alt: 'Driverless prototype navigating a cone track using the perception and planning stack',
+      src: 'media/racing/dv-accel.mp4',
+      poster: 'media/racing/dv-accel-poster.jpg',
+      alt: 'The E03 driverless racecar on its acceleration run at Formula Student Portugal, cones lining the floodlit track at dusk',
+      portrait: true,
     },
     metrics: [
+      { label: "FS Portugal '26 — Driverless + EV", value: '1st', tone: 'gold' },
       { label: 'Lap-time gain', value: '15%' },
-      { label: "FS-AI '25", value: '4th / 25' },
       { label: 'Cross-track error', value: '-16%' },
       { label: 'Detection latency', value: '100ms → 7ms' },
     ],
@@ -225,6 +229,7 @@ export const caseStudies = [
         heading: 'Planning & Control',
         body: 'A Nonlinear Model Predictive Controller using a dynamic bicycle model for lap-time-optimal trajectory tracking, paired with a Delaunay Triangulation + RRT* path planning framework for real-time adaptability on dynamic tracks.',
         media: [
+          { type: 'video', src: 'media/racing/mpc.mp4', poster: 'media/racing/mpc-poster.jpg', alt: 'Nonlinear MPC tracking a racing line through a cone course', caption: 'NMPC tracking the optimal racing line' },
           { type: 'video', src: 'media/racing/mpc-sim.mp4', poster: 'media/racing/mpc-sim-poster.jpg', alt: 'NMPC trajectory tracking simulation', caption: 'NMPC trajectory tracking simulation' },
           { type: 'video', src: 'media/racing/rrt.mp4', poster: 'media/racing/rrt-poster.jpg', alt: 'RRT* path planning simulation', caption: 'RRT* path planning' },
           { type: 'image', src: 'media/racing/delaunay.webp', alt: 'Delaunay triangulation visibility graph diagram', caption: 'Delaunay triangulation visibility graph' },
@@ -505,11 +510,11 @@ export const timeline = [
     period: 'Mar 2023 – Jul 2026',
     title: 'Chief Autonomous Systems Officer & Deputy Team Leader',
     org: 'IITB Racing',
-    badge: '4th / 25 at FS-AI ’25',
+    badge: '1st overall, FS Portugal ’26',
     kind: 'role',
     tone: 'gold',
     guide: 'Prof. Archak Mittal',
-    note: "Led the Level-4 autonomous vehicle division of a 100+ student team, building India's first autonomous EV racecar.",
+    note: "Led the Level-4 autonomous vehicle division of a 100+ student team, building India's first autonomous EV racecar. Overall Champions in both the Driverless and EV categories at Formula Student Portugal '26.",
   },
   {
     period: '2022 – 2026',

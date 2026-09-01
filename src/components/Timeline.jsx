@@ -18,7 +18,7 @@ const TONES = {
 // still here, just read alongside the work that happened during them.
 export function Timeline() {
   return (
-    <Section id="journey">
+    <Section id="journey" band="raised">
       <SectionHeading
         eyebrow="Journey"
         title="Where the work happened"

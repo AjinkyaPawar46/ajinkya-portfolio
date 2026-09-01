@@ -10,7 +10,7 @@ export function Awards() {
   const rest = achievements.filter((a) => !a.featured);
 
   return (
-    <Section id="awards" band="raised">
+    <Section id="awards">
       <SectionHeading
         eyebrow="Recognition"
         title="Honors & awards"

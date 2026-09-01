@@ -5,10 +5,10 @@ import cvPDF from '../../assets/Ajinkya_Pawar_CV.pdf';
 
 const NAV_ITEMS = [
   { id: 'work', label: 'Work' },
-  { id: 'projects', label: 'Projects' },
   { id: 'publications', label: 'Publications' },
   { id: 'journey', label: 'Journey' },
   { id: 'awards', label: 'Awards' },
+  { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
 ];

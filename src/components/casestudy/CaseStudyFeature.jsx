@@ -10,6 +10,12 @@ export function CaseStudyFeature({ caseStudy, index, onOpen }) {
   const raised = index % 2 === 0;
   const media = caseStudy.featureMedia;
 
+  // Portrait clips (phone footage) get a narrower column. At the 7-column
+  // width a 3:4 video is ~930px tall on a wide screen, which stretches the
+  // band far past its text and leaves a column of dead space beside it.
+  const mediaSpan = media?.portrait ? 'lg:col-span-4' : 'lg:col-span-7';
+  const textSpan = media?.portrait ? 'lg:col-span-8' : 'lg:col-span-5';
+
   return (
     <div className={`py-20 sm:py-28 ${raised ? 'bg-ink-900 border-y border-line-soft' : ''}`}>
       <div className="max-w-rail mx-auto px-6 sm:px-8">
@@ -17,7 +23,7 @@ export function CaseStudyFeature({ caseStudy, index, onOpen }) {
           {/* `order-*` flips the columns on lg and up while leaving the DOM
               order alone, so the reading and tab order stay media-then-text
               on every row regardless of which side the video sits on. */}
-          <div className={`lg:col-span-7 group ${flipped ? 'lg:order-2' : ''}`}>
+          <div className={`${mediaSpan} group ${flipped ? "lg:order-2" : ""}`}>
             {media ? (
               <AutoplayVideo
                 src={media.src}
@@ -39,7 +45,7 @@ export function CaseStudyFeature({ caseStudy, index, onOpen }) {
             )}
           </div>
 
-          <div className={`lg:col-span-5 ${flipped ? 'lg:order-1' : ''}`}>
+          <div className={`${textSpan} ${flipped ? "lg:order-1" : ""}`}>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
               {caseStudy.orgShort ?? caseStudy.org}
             </p>
@@ -55,7 +61,7 @@ export function CaseStudyFeature({ caseStudy, index, onOpen }) {
               {caseStudy.metrics.map((metric) => (
                 <div key={metric.label}>
                   <dt className="sr-only">{metric.label}</dt>
-                  <dd className="font-mono text-xl sm:text-2xl font-semibold text-accent leading-none">
+                  <dd className={`font-mono text-xl sm:text-2xl font-semibold leading-none ${metric.tone === "gold" ? "text-gold" : "text-accent"}`}>
                     {metric.value}
                   </dd>
                   <p className="mt-2 text-xs text-zinc-400 leading-snug">{metric.label}</p>

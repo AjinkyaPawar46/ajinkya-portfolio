@@ -11,7 +11,7 @@ const PROGRAMMING = 'C:/Programming';
 // into this directory before running `npm run media` — entries whose source
 // is missing are warned about and skipped, so a partial download degrades
 // gracefully rather than failing the run.
-const PORTFOLIO = `${DOWNLOADS}/Portfolio`;
+const PORTFOLIO = DOWNLOADS; // Drive 'Portfolio' files were saved straight into Downloads
 
 export const gifs = [
   {
@@ -105,52 +105,24 @@ export const videos = [
 // crop is optional: supply cropWidth/cropHeight (and cropX/cropY) only when
 // the source is not already 16:9. `trimStart` picks a window out of a
 // longer film; `trimSeconds` is the length taken from that point.
+// The VSV system film: a 1920x1080/60fps four-panel composite showing the
+// whole autonomy stack at once — two cone-detection camera feeds, the
+// bird's-eye planning view (cone map, Delaunay/RRT* edges, tracked
+// trajectory), the E03 car on the cone track, and the cockpit view. Already
+// 16:9, so no crop.
+//
+// Trim window chosen by eye from ffmpeg contact sheets: the film's first
+// half is mostly static pit/paddock shots; 34s–52s is a continuous driving
+// stretch with all four panels live. Poster is taken 6s in (=40s absolute).
 export const hero = {
   id: 'hero',
-  src: `${DOWNLOADS}/Videos/FB DV Run.mp4`,
+  src: `${PORTFOLIO}/VSV5.mp4`,
   out: 'public/media/hero/hero.mp4',
   poster: 'public/media/hero/hero-poster.jpg',
-  // source is 1200x1200; crop to a 1200x675 (16:9) band before scaling to
-  // 1280x720. y is the vertical offset of that crop within the square
-  // frame — tune this by eye if the subject isn't centered.
-  cropWidth: 1200,
-  cropHeight: 675,
-  cropY: 262,
   scale: '1280:720',
-  trimSeconds: 20,
-  posterAtSeconds: 3,
-};
-
-// Candidate replacement heroes from the Drive Portfolio folder. Swap one of
-// these into `hero` above and run `npm run media:hero` — the output path
-// stays media/hero/hero.mp4, so content.js never changes.
-//
-// Both are almost certainly already 16:9, so neither sets a crop. `IITB
-// Racing VSV.mp4` is a 69 MB film: it MUST be trimmed (docs/ is committed
-// alongside public/media/, so every byte lands in git twice). Verify the
-// real dimensions and pick the trim window with:
-//   ffprobe -v error -select_streams v:0 \
-//     -show_entries stream=width,height,duration -of default=nw=1 <file>
-export const heroCandidates = {
-  dvAcceleration: {
-    id: 'hero',
-    src: `${PORTFOLIO}/DV_Acceleration.mp4`,
-    out: 'public/media/hero/hero.mp4',
-    poster: 'public/media/hero/hero-poster.jpg',
-    scale: '1280:720',
-    trimSeconds: 20,
-    posterAtSeconds: 2,
-  },
-  racingVSV: {
-    id: 'hero',
-    src: `${PORTFOLIO}/IITB Racing VSV.mp4`,
-    out: 'public/media/hero/hero.mp4',
-    poster: 'public/media/hero/hero-poster.jpg',
-    scale: '1280:720',
-    trimStart: 0, // tune once the film has been watched
-    trimSeconds: 18,
-    posterAtSeconds: 3,
-  },
+  trimStart: 34,
+  trimSeconds: 18,
+  posterAtSeconds: 6,
 };
 
 // quality: 'photo' (q82, max 1920w) | 'diagram' (q90, max 1600w — text/line art)

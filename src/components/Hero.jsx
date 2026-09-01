@@ -9,9 +9,16 @@ const container = {
   show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
+// Transform only — deliberately NOT opacity. framer-motion applies the
+// `hidden` state as an inline style and then animates via rAF, so anything
+// faded from opacity:0 stays invisible whenever rAF doesn't run (a
+// backgrounded tab, a heavily loaded device, a framer-motion failure). That
+// is survivable for a section further down the page, but the hero is the
+// first thing anyone sees — it must be readable even if the animation never
+// fires. Below-fold reveals in Section.jsx still fade.
 const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  hidden: { y: 18 },
+  show: { y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
 export function Hero() {
@@ -26,8 +33,8 @@ export function Hero() {
           horizontal one holds the text column readable on wide screens where
           the subject drifts right. A gradient alone doesn't hold contrast
           reliably over a moving shot. */}
-      <div className="absolute inset-0 bg-ink-950/55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/55 to-ink-950/20" />
+      <div className="absolute inset-0 bg-ink-950/40" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/45 to-ink-950/10" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink-950/80 via-ink-950/20 to-transparent" />
 
       <motion.div
