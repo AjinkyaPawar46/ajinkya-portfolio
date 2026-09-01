@@ -139,10 +139,27 @@ function transcodeHero(h) {
   ensureDir(h.poster);
   const outAbs = resolve(root, h.out);
   const posterAbs = resolve(root, h.poster);
+
+  // The crop is optional. A square or otherwise off-ratio source needs a
+  // 16:9 band cut out of it before scaling; a source that's already 16:9
+  // (most edited footage) must not be cropped at all, or it loses the top
+  // and bottom of every frame.
+  const filters = [];
+  if (h.cropWidth && h.cropHeight) {
+    filters.push(`crop=${h.cropWidth}:${h.cropHeight}:${h.cropX ?? 0}:${h.cropY ?? 0}`);
+  }
+  filters.push(`scale=${h.scale}`);
+
+  // `trimStart` picks the window out of a longer film; without it the clip
+  // starts at 0. Placed after -i so the seek is frame-accurate.
+  const trim = [];
+  if (h.trimStart) trim.push('-ss', String(h.trimStart));
+  if (h.trimSeconds) trim.push('-t', String(h.trimSeconds));
+
   ffmpeg([
     '-y', '-i', h.src,
-    '-t', String(h.trimSeconds),
-    '-vf', `crop=${h.cropWidth}:${h.cropHeight}:0:${h.cropY},scale=${h.scale}`,
+    ...trim,
+    '-vf', filters.join(','),
     '-c:v', 'libx264', '-crf', '30', '-preset', 'slow', '-profile:v', 'main',
     '-pix_fmt', 'yuv420p', '-movflags', '+faststart', '-an',
     outAbs,

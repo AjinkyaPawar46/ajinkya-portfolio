@@ -64,18 +64,18 @@ export function CaseStudyModal({ caseStudy, onClose }) {
             animate={{ opacity: 1, y: 0 }}
             exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: reducedMotion ? 0 : 0.25, ease: 'easeOut' }}
-            className="relative z-10 w-full max-w-4xl mx-auto bg-ink-900 border border-line rounded-2xl my-4 sm:my-8"
+            className="relative z-10 w-full max-w-4xl mx-auto bg-ink-850 border border-line rounded-2xl shadow-lift my-4 sm:my-8"
           >
-            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 p-6 border-b border-line bg-ink-900/95 backdrop-blur rounded-t-2xl">
+            <div className="sticky top-0 z-10 flex items-start justify-between gap-4 p-6 border-b border-line bg-ink-850/95 backdrop-blur rounded-t-2xl">
               <div>
                 <p className="text-xs uppercase tracking-wide text-accent font-mono">{caseStudy.org}</p>
                 <h2 id={`case-study-title-${caseStudy.id}`} className="text-xl sm:text-2xl font-bold mt-1">
                   {caseStudy.title}
                 </h2>
-                <p className="text-sm text-zinc-500 mt-1">
+                <p className="text-sm text-zinc-400 mt-1">
                   {caseStudy.role} · {caseStudy.duration}
                 </p>
-                {caseStudy.guide && <p className="text-xs text-zinc-600 mt-1">Guide: {caseStudy.guide}</p>}
+                {caseStudy.guide && <p className="text-xs text-zinc-400 mt-1">Guide: {caseStudy.guide}</p>}
               </div>
               <button
                 onClick={onClose}
@@ -93,7 +93,7 @@ export function CaseStudyModal({ caseStudy, onClose }) {
                 {caseStudy.metrics.map((m) => (
                   <span key={m.label} className="text-xs font-mono px-3 py-1.5 rounded-full border border-line">
                     <span className="text-accent font-semibold">{m.value}</span>{' '}
-                    <span className="text-zinc-500">{m.label}</span>
+                    <span className="text-zinc-400">{m.label}</span>
                   </span>
                 ))}
               </div>
@@ -125,7 +125,7 @@ export function CaseStudyModal({ caseStudy, onClose }) {
                     {bulletGroups(caseStudy.detail).map((group, i) => (
                       <div key={i}>
                         {group.label && <p className="text-sm font-medium text-zinc-300 mb-2">{group.label}</p>}
-                        <ul className="list-disc ml-5 space-y-1 text-sm text-zinc-400">
+                        <ul className="list-disc ml-5 space-y-1 text-sm text-zinc-300">
                           {group.bullets.map((b, j) => (
                             <li key={j}>{b}</li>
                           ))}

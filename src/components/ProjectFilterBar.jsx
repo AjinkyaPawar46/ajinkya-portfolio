@@ -10,7 +10,7 @@ export function ProjectFilterBar({ tags, activeTag, onSelect }) {
             key={tag}
             onClick={() => onSelect(tag)}
             className={`relative px-3 py-1.5 rounded-full text-sm border transition-colors font-mono ${
-              isActive ? 'text-ink-950 border-transparent' : 'text-zinc-400 border-line hover:border-accent hover:text-accent'
+              isActive ? 'text-ink-950 border-transparent font-medium' : 'text-zinc-400 border-line hover:border-accent hover:text-accent'
             }`}
           >
             {isActive && (

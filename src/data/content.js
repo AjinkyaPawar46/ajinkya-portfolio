@@ -31,43 +31,52 @@ export const researchInterests = [
   'Aerial Robotics',
 ];
 
-export const education = [
-  {
-    institution: 'University of Michigan, Ann Arbor',
-    years: '2026 – 2028',
-    degree: 'M.S. in Robotics',
-    note: 'Incoming',
-  },
-  {
-    institution: 'Indian Institute of Technology Bombay',
-    years: '2022 – 2026',
-    degree: 'B.Tech, Metallurgical Engineering & Materials Science',
-    minor: 'Minor: Artificial Intelligence & Data Science',
-    gpa: '8.41 / 10',
-  },
-];
+// Degrees live in the `timeline` export at the bottom of this file, not in
+// a separate `education` list — one record, so the two can't drift apart.
 
+// `featured: true` items get the large treatment in Awards.jsx; the rest
+// render in a compact secondary row. `stat` is the figure pulled out for
+// display, `detail` the qualifying line beneath it.
 export const achievements = [
   {
-    title: 'IIT Bombay Undergraduate Research Award (2025)',
-    detail: 'For integrated perception pipelines & MPC systems improving autonomous racing reliability',
+    title: 'IIT Bombay Undergraduate Research Award',
+    stat: '2025',
+    detail:
+      'For integrated perception pipelines & MPC systems improving autonomous racing reliability',
+    featured: true,
   },
   {
     title: "Formula Student AI '24, United Kingdom",
-    detail: 'Represented the 1st and only Indian contingent',
+    stat: '1st',
+    detail: 'Represented the 1st and only Indian contingent among 80+ teams',
+    featured: true,
   },
   {
-    title: '99.44%-ile JEE Mains',
-    detail: '1M+ candidates',
+    title: 'Jaguar Land Rover cash prize',
+    stat: 'JLR',
+    detail: 'For pioneering self-driving research & development in electric race-cars',
+    featured: true,
   },
+  { title: 'JEE Mains', stat: '99.44%-ile', detail: '1M+ candidates' },
+  { title: 'JEE Advanced', stat: '98.07%-ile', detail: '150k candidates' },
   {
-    title: '98.07%-ile JEE Advanced',
-    detail: '150k candidates',
+    title: 'Academic record',
+    stat: '25+ AAs/ABs',
+    detail: 'Top 15% across 50 courses, incl. Machine Learning, AI & Data Science',
   },
-  {
-    title: '25+ AAs/ABs (top 15%)',
-    detail: 'Across 50 courses, incl. Machine Learning, AI & Data Science',
-  },
+];
+
+// The "proof at a glance" row rendered directly under the hero. Every value
+// here already appears in the copy below — this export only decides which
+// six lead. `tone` follows the site-wide rule: accent (cyan) for
+// quantitative/technical, gold (amber) for recognition.
+export const impactStats = [
+  { value: '4th', suffix: '/ 25', label: "Formula Student AI '25, UK", tone: 'gold' },
+  { value: '1st', label: 'Indian driverless contingent', tone: 'gold' },
+  { value: '100+', label: 'Students led as CTO', tone: 'gold' },
+  { value: '15%', label: 'NMPC lap-time gain', tone: 'accent' },
+  { value: '100→7', suffix: 'ms', label: 'Detection latency, TensorRT', tone: 'accent' },
+  { value: '+40%', label: "Push prediction accuracy, IROS '26", tone: 'accent' },
 ];
 
 export const publications = [
@@ -186,6 +195,14 @@ export const caseStudies = [
     summary:
       'Leading the Level-4 autonomous vehicle division building India\'s first autonomous EV racecar — NMPC, SLAM, perception and path planning for the Formula Student AI circuit.',
     poster: { src: 'media/racing/e14.webp', alt: 'IITB Racing E11 electric racecar in the pit lane at Formula Student AI, United Kingdom' },
+    // The clip that autoplays inline in this case study's feature band.
+    // Distinct from `poster` (still used as the modal header image) and from
+    // `sections[].media` (the deep-dive gallery).
+    featureMedia: {
+      src: 'media/racing/bot-run.mp4',
+      poster: 'media/racing/bot-run-poster.jpg',
+      alt: 'Driverless prototype navigating a cone track using the perception and planning stack',
+    },
     metrics: [
       { label: 'Lap-time gain', value: '15%' },
       { label: "FS-AI '25", value: '4th / 25' },
@@ -199,9 +216,9 @@ export const caseStudies = [
         heading: 'The Car',
         body: 'India\'s 1st autonomous EV racecar, integrated with vision, SLAM, path planning and controls — plus a 1/6th-scale driverless prototype used for rapid iteration on the full autonomy stack.',
         media: [
-          { type: 'image', src: 'media/racing/car.webp', alt: 'E77 driverless racecar with LiDAR and stereo camera sensor stack mounted on the nose', caption: 'E77 driverless car — LiDAR + stereo camera sensor stack' },
-          { type: 'image', src: 'media/racing/dv-bot.webp', alt: '1/6th scale driverless prototype with Velodyne LiDAR on a cone track', caption: '1/6th-scale prototype on a cone track, Velodyne LiDAR + stereo cams' },
-          { type: 'image', src: 'media/racing/team.webp', alt: 'IITB Racing driverless team group photo', caption: 'The driverless division team' },
+          { type: 'image', fit: 'cover', src: 'media/racing/car.webp', alt: 'E77 driverless racecar with LiDAR and stereo camera sensor stack mounted on the nose', caption: 'E77 driverless car — LiDAR + stereo camera sensor stack' },
+          { type: 'image', fit: 'cover', src: 'media/racing/dv-bot.webp', alt: '1/6th scale driverless prototype with Velodyne LiDAR on a cone track', caption: '1/6th-scale prototype on a cone track, Velodyne LiDAR + stereo cams' },
+          { type: 'image', fit: 'cover', src: 'media/racing/team.webp', alt: 'IITB Racing driverless team group photo', caption: 'The driverless division team' },
         ],
       },
       {
@@ -234,11 +251,19 @@ export const caseStudies = [
     title: 'Rapid Object Retrieval from Dense Clutter',
     role: 'Robotics Research Intern',
     org: 'ARC Lab, Computer Science, Rutgers University–New Brunswick',
+    // The feature band's eyebrow is wide-tracked mono — the full org wraps
+    // to two lines there and crowds the title. Modal keeps the full string.
+    orgShort: 'Rutgers ARC Lab',
     duration: 'Apr 2025 – Jul 2025',
     guide: 'Prof. Jingjin Yu',
     summary:
       'A Transformer-based push-prediction model and reactive RL policy for retrieving target objects from dense clutter — submitted to IROS 2026.',
     poster: { src: 'media/rutgers/figure1.webp', alt: 'CPRL method figure: reactive RL policy retrieving an object from clutter' },
+    featureMedia: {
+      src: 'media/rutgers/case04.mp4',
+      poster: 'media/rutgers/case04-poster.jpg',
+      alt: 'UR5e arm pushing through dense clutter to retrieve a target object',
+    },
     metrics: [
       { label: 'Push-prediction accuracy', value: '+40%' },
       { label: 'Venue', value: 'IROS 2026' },
@@ -273,11 +298,18 @@ export const caseStudies = [
     title: 'Contact Force Control of an Aerial Manipulator',
     role: 'Undergraduate Thesis',
     org: 'INDUS Lab, Mechanical Engineering, IIT Bombay',
+    orgShort: 'INDUS Lab, IIT Bombay',
     duration: 'Jan 2025 – May 2026',
     guide: 'Prof. Vivek Sangwan',
     summary:
       'Design and control of an autonomous quadcopter with an under-actuated linked manipulator, for contact-force applications like debris removal and door/window opening in disaster response.',
     poster: { src: 'media/aerial/drone.webp', alt: 'Quadcopter with linked aerial manipulator on the lab floor' },
+    featureMedia: {
+      src: 'media/aerial/drone-flying.mp4',
+      poster: 'media/aerial/drone-flying-poster.jpg',
+      alt: 'Quadcopter with linked manipulator holding a hover during an indoor flight test',
+      portrait: true,
+    },
     metrics: [
       { label: 'Steady-state error', value: '<2%' },
       { label: 'Settling time', value: '<5s' },
@@ -291,10 +323,10 @@ export const caseStudies = [
         heading: 'Hardware',
         body: 'An under-actuated linked manipulator mounted on a custom quadcopter, with a lightweight carbon-fiber chassis redesign that cut total weight by 10% and reduced vibration-induced sensor noise.',
         media: [
-          { type: 'image', src: 'media/aerial/drone.webp', alt: 'Quadcopter with aerial manipulator', caption: 'Quadcopter with linked aerial manipulator' },
-          { type: 'image', src: 'media/aerial/drone-bot.webp', alt: 'Quadcopter and ground robot together', caption: 'Aerial and ground platforms' },
-          { type: 'image', src: 'media/aerial/bot.webp', alt: 'Ground robot platform', caption: 'Ground robot platform' },
-          { type: 'image', src: 'media/aerial/chassis.webp', alt: 'Carbon-fiber chassis redesign', caption: 'Carbon-fiber chassis redesign' },
+          { type: 'image', fit: 'cover', src: 'media/aerial/drone.webp', alt: 'Quadcopter with aerial manipulator', caption: 'Quadcopter with linked aerial manipulator' },
+          { type: 'image', fit: 'cover', src: 'media/aerial/drone-bot.webp', alt: 'Quadcopter and ground robot together', caption: 'Aerial and ground platforms' },
+          { type: 'image', fit: 'cover', src: 'media/aerial/bot.webp', alt: 'Ground robot platform', caption: 'Ground robot platform' },
+          { type: 'image', fit: 'cover', src: 'media/aerial/chassis.webp', alt: 'Carbon-fiber chassis redesign', caption: 'Carbon-fiber chassis redesign' },
         ],
       },
       {
@@ -328,11 +360,18 @@ export const caseStudies = [
 // Fixed chip order — not derived from `projects` so it stays stable regardless of data edits.
 export const PROJECT_TAGS = ['Robotics', 'Computer Vision', 'ML & Data Science'];
 
+// These four have no photographs, so each carries an `art` key naming a
+// generated SVG identity in components/projectart/ — deliberately graphic,
+// never dressed up as a real screenshot. `metric` is the one number pulled
+// out large on the card.
 export const projects = [
   {
     title: 'StarTrack: Arduino-based Star Tracker',
     duration: 'Feb 2025 – Apr 2025',
     tag: 'Robotics',
+    art: 'startrack',
+    metric: { value: '2-axis', label: 'equatorial mount' },
+    tech: ['Arduino', 'Steppers', 'RTC', 'Gyro', '3D printing'],
     bullets: [
       'Led a team of six to develop a dual-axis robotic star tracker for automated celestial alignment and sidereal tracking',
       'Built a 2-axis equatorial mount using Arduino, RTC, and stepper motors with gyro-based feedback',
@@ -344,6 +383,9 @@ export const projects = [
     title: 'Segmentation-based Bokeh',
     duration: 'Aug 2024 – Nov 2024',
     tag: 'Computer Vision',
+    art: 'bokeh',
+    metric: { value: '96%', label: 'precision (IoU)' },
+    tech: ['DeepLabV3', 'TensorRT', 'OpenCV', 'Alpha matting'],
     bullets: [
       'Implemented real-time semantic segmentation with DeepLabV3 to isolate human faces in video streams',
       'Applied Gaussian blur and alpha matting for a natural bokeh effect',
@@ -355,6 +397,9 @@ export const projects = [
     title: 'Architectural Design Optimization',
     duration: 'Jan 2024 – Apr 2024',
     tag: 'ML & Data Science',
+    art: 'layouts',
+    metric: { value: '1,183', label: 'layouts clustered' },
+    tech: ['K-Means', 'CNN', 'OpenCV', 'Feature engineering'],
     bullets: [
       'Applied advanced clustering and image data mining techniques to optimize architectural design processes',
       'Conducted data analysis and feature engineering on 1,183 building layout images using OpenCV',
@@ -366,6 +411,9 @@ export const projects = [
     title: 'Ping Pong Juggling Robot',
     duration: 'Aug 2023 – Nov 2023',
     tag: 'Robotics',
+    art: 'pingpong',
+    metric: { value: 'PID', label: 'closed-loop control' },
+    tech: ['Arduino UNO', 'C++', 'PID', 'Microphone sensing'],
     bullets: [
       'Led a team of four to design and develop an automatic ping pong juggling robot',
       'Engineered and programmed the robot using an Arduino UNO and advanced C++ scripts',
@@ -415,4 +463,61 @@ export const extracurricular = [
   'Mentored 20+ class XII students who qualified the JEE Advanced examination',
   'Received "Scientist of The Year" award in school for extracting DNA of a banana and observing it under a microscope',
   'Received 2nd prize in an inter-school science exhibition for manufacturing an enzyme from wet garbage',
+];
+
+// A single 2022 → 2028 arc merging education and roles, rendered by
+// Timeline.jsx. Newest first — the spine reads top-down from what's next
+// to where it started. Every value here is drawn from the exports above;
+// no new claims are introduced.
+//   kind: 'education' | 'role' | 'research'
+//   tone: 'gold' for recognition/status markers, 'accent' otherwise
+export const timeline = [
+  {
+    period: '2026 – 2028',
+    title: 'M.S. in Robotics',
+    org: 'University of Michigan, Ann Arbor',
+    badge: 'Incoming',
+    kind: 'education',
+    tone: 'gold',
+    note: 'Continuing autonomous-driving research — perception, planning and learning-based control.',
+  },
+  {
+    period: 'Jan 2025 – May 2026',
+    title: 'Contact Force Control of Aerial Manipulators',
+    org: 'INDUS Lab, Mechanical Engineering, IIT Bombay',
+    badge: 'Undergraduate Thesis',
+    kind: 'research',
+    tone: 'accent',
+    guide: 'Prof. Vivek Sangwan',
+    note: '<2% steady-state error and <5s settling time on hover and helical trajectories, with a carbon-fiber chassis redesign cutting weight 10%.',
+  },
+  {
+    period: 'Apr 2025 – Jul 2025',
+    title: 'Robotics Research Intern',
+    org: 'ARC Lab, Computer Science, Rutgers University–New Brunswick',
+    badge: 'IROS 2026 submission',
+    kind: 'research',
+    tone: 'accent',
+    guide: 'Prof. Jingjin Yu',
+    note: 'Replaced an MLP push-interaction predictor with a Transformer, improving accuracy by over 40% on a 6-DoF UR5e.',
+  },
+  {
+    period: 'Mar 2023 – Jul 2026',
+    title: 'Chief Autonomous Systems Officer & Deputy Team Leader',
+    org: 'IITB Racing',
+    badge: '4th / 25 at FS-AI ’25',
+    kind: 'role',
+    tone: 'gold',
+    guide: 'Prof. Archak Mittal',
+    note: "Led the Level-4 autonomous vehicle division of a 100+ student team, building India's first autonomous EV racecar.",
+  },
+  {
+    period: '2022 – 2026',
+    title: 'B.Tech, Metallurgical Engineering & Materials Science',
+    org: 'Indian Institute of Technology Bombay',
+    badge: 'GPA 8.41 / 10',
+    kind: 'education',
+    tone: 'accent',
+    note: 'Minor in Artificial Intelligence & Data Science.',
+  },
 ];

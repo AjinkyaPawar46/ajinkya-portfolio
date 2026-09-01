@@ -7,6 +7,12 @@
 const DOWNLOADS = 'C:/Users/ajink/Downloads';
 const PROGRAMMING = 'C:/Programming';
 
+// Files pulled down from the Google Drive "Portfolio" folder. Download them
+// into this directory before running `npm run media` — entries whose source
+// is missing are warned about and skipped, so a partial download degrades
+// gracefully rather than failing the run.
+const PORTFOLIO = `${DOWNLOADS}/Portfolio`;
+
 export const gifs = [
   {
     id: 'racing-mpc-sim',
@@ -52,6 +58,21 @@ export const videos = [
     out: 'public/media/rutgers/case13.mp4',
     height: 720,
   },
+  // --- From the Drive Portfolio folder ---
+  {
+    id: 'racing-dv-accel',
+    src: `${PORTFOLIO}/DV_Acceleration.mp4`,
+    out: 'public/media/racing/dv-accel.mp4',
+    height: 720,
+  },
+  {
+    // webm source — transcodeVideo forces libx264/mp4 output, so Safari and
+    // iOS (which won't play VP8/VP9 in a <video> reliably) are covered.
+    id: 'racing-mpc',
+    src: `${PORTFOLIO}/MPC.webm`,
+    out: 'public/media/racing/mpc.mp4',
+    height: 720,
+  },
   {
     id: 'aerial-drone-flying',
     src: `${DOWNLOADS}/BTP2 Presentation/drone_flying.mp4`,
@@ -78,7 +99,12 @@ export const videos = [
   },
 ];
 
-// hero is transcoded separately (crop + trim), see build-media.mjs `hero()`
+// hero is transcoded separately (optional crop + trim), see
+// build-media.mjs `transcodeHero()`.
+//
+// crop is optional: supply cropWidth/cropHeight (and cropX/cropY) only when
+// the source is not already 16:9. `trimStart` picks a window out of a
+// longer film; `trimSeconds` is the length taken from that point.
 export const hero = {
   id: 'hero',
   src: `${DOWNLOADS}/Videos/FB DV Run.mp4`,
@@ -93,6 +119,38 @@ export const hero = {
   scale: '1280:720',
   trimSeconds: 20,
   posterAtSeconds: 3,
+};
+
+// Candidate replacement heroes from the Drive Portfolio folder. Swap one of
+// these into `hero` above and run `npm run media:hero` — the output path
+// stays media/hero/hero.mp4, so content.js never changes.
+//
+// Both are almost certainly already 16:9, so neither sets a crop. `IITB
+// Racing VSV.mp4` is a 69 MB film: it MUST be trimmed (docs/ is committed
+// alongside public/media/, so every byte lands in git twice). Verify the
+// real dimensions and pick the trim window with:
+//   ffprobe -v error -select_streams v:0 \
+//     -show_entries stream=width,height,duration -of default=nw=1 <file>
+export const heroCandidates = {
+  dvAcceleration: {
+    id: 'hero',
+    src: `${PORTFOLIO}/DV_Acceleration.mp4`,
+    out: 'public/media/hero/hero.mp4',
+    poster: 'public/media/hero/hero-poster.jpg',
+    scale: '1280:720',
+    trimSeconds: 20,
+    posterAtSeconds: 2,
+  },
+  racingVSV: {
+    id: 'hero',
+    src: `${PORTFOLIO}/IITB Racing VSV.mp4`,
+    out: 'public/media/hero/hero.mp4',
+    poster: 'public/media/hero/hero-poster.jpg',
+    scale: '1280:720',
+    trimStart: 0, // tune once the film has been watched
+    trimSeconds: 18,
+    posterAtSeconds: 3,
+  },
 };
 
 // quality: 'photo' (q82, max 1920w) | 'diagram' (q90, max 1600w — text/line art)

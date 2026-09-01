@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* The header is sticky, so a bare anchor jump parks the target heading
+     underneath it. Every element with an id is a potential anchor target. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  html,
+  body {
+    background-color: #08090c;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: #164e63;
+    color: #ecfeff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #22d3ee;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    /* Belt-and-braces: components gate their own motion on
+       usePrefersReducedMotion, but CSS-only animations (the scroll cue,
+       hover transitions) need stopping here. */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Vertical hairline used by the Timeline spine and section dividers. */
+  .bg-spine {
+    background-image: linear-gradient(to bottom, transparent, #2f333d 12%, #2f333d 88%, transparent);
+  }
+}
