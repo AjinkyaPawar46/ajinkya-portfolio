@@ -2,7 +2,7 @@
 
 export const profile = {
   name: 'Ajinkya Pawar',
-  title: 'Senior Undergraduate, Dept. of Metallurgical Engineering & Materials Science, IIT Bombay',
+  title: 'M.S. Robotics Student, University of Michigan, Ann Arbor',
   tagline: 'Innovation begins where convention ends.',
   role: 'Autonomous Systems & Controls Engineer · Robotics Researcher',
   links: {
@@ -39,7 +39,7 @@ export const researchInterests = [
 // display, `detail` the qualifying line beneath it.
 export const achievements = [
   {
-    title: "Overall Champions — Formula Student Portugal '26",
+    title: "Overall Champions - Formula Student Portugal '26",
     stat: '1st',
     detail:
       "Won both the Driverless Cup and the EV Category as India's 1st and only contingent, plus 1st in the Engineering Design Presentation",
@@ -72,7 +72,7 @@ export const achievements = [
 // six lead. `tone` follows the site-wide rule: accent (cyan) for
 // quantitative/technical, gold (amber) for recognition.
 export const impactStats = [
-  { value: '1st', suffix: 'overall', label: "FS Portugal '26 — Driverless & EV", tone: 'gold' },
+  { value: '1st', suffix: 'overall', label: "FS Portugal '26 - Driverless & EV", tone: 'gold' },
   { value: '4th', suffix: '/ 25', label: "Formula Student AI '25, UK", tone: 'gold' },
   { value: '100+', label: 'Students led as CTO', tone: 'gold' },
   { value: '15%', label: 'NMPC lap-time gain', tone: 'accent' },
@@ -90,7 +90,7 @@ export const publications = [
   {
     authors: 'Y. Rampuria et al.',
     title: 'IIT Bombay Racing Driverless: Autonomous Driving Stack for Formula Student AI',
-    venue: 'Contributing author — perception, path planning and controls',
+    venue: 'Contributing author - perception, path planning and controls',
     link: 'https://arxiv.org/pdf/2408.06113',
   },
 ];
@@ -104,7 +104,7 @@ export const technicalHighlight = {
   summary:
     "Leading the Level-4 autonomous vehicle division in a team of 100+ students, representing India as the 1st and only Indian self-driving EV racecar contingent among 80+ teams at IMechE Formula Student AI, United Kingdom.",
   impact: [
-    "Secured 1st place overall at Formula Student Portugal '26 — winning both the Driverless Cup and the EV Category",
+    "Secured 1st place overall at Formula Student Portugal '26 - winning both the Driverless Cup and the EV Category",
     "Secured 1st place in the Engineering Design Presentation at FSPT '26, evaluated by AV industry experts",
     "Responsible for India's 1st autonomous EV racecar integrated with vision, SLAM, path planning and controls",
     "Secured 4th place among 25 teams at Formula Student AI '25, a 7-place jump from the previous year",
@@ -196,7 +196,7 @@ export const caseStudies = [
     duration: 'Mar 2023 – Jul 2026',
     guide: 'Prof. Archak Mittal, Civil Engineering, IIT Bombay',
     summary:
-      "Leading the Level-4 autonomous vehicle division building India's first autonomous EV racecar — NMPC, SLAM, perception and path planning. Overall Champions at Formula Student Portugal '26 in both the Driverless and EV categories.",
+      "Leading the Level-4 autonomous vehicle division building India's first autonomous EV racecar - NMPC, SLAM, perception and path planning. Overall Champions at Formula Student Portugal '26 in both the Driverless and EV categories.",
     poster: { src: 'media/racing/e14.webp', alt: 'IITB Racing E11 electric racecar in the pit lane at Formula Student AI, United Kingdom' },
     // The clip that autoplays inline in this case study's feature band.
     // Distinct from `poster` (still used as the modal header image) and from
@@ -208,7 +208,7 @@ export const caseStudies = [
       portrait: true,
     },
     metrics: [
-      { label: "FS Portugal '26 — Driverless + EV", value: '1st', tone: 'gold' },
+      { label: "FS Portugal '26 - Driverless + EV", value: '1st', tone: 'gold' },
       { label: 'Lap-time gain', value: '15%' },
       { label: 'Cross-track error', value: '-16%' },
       { label: 'Detection latency', value: '100ms → 7ms' },
@@ -218,9 +218,9 @@ export const caseStudies = [
     sections: [
       {
         heading: 'The Car',
-        body: 'India\'s 1st autonomous EV racecar, integrated with vision, SLAM, path planning and controls — plus a 1/6th-scale driverless prototype used for rapid iteration on the full autonomy stack.',
+        body: 'India\'s 1st autonomous EV racecar, integrated with vision, SLAM, path planning and controls - plus a 1/6th-scale driverless prototype used for rapid iteration on the full autonomy stack.',
         media: [
-          { type: 'image', fit: 'cover', src: 'media/racing/car.webp', alt: 'E77 driverless racecar with LiDAR and stereo camera sensor stack mounted on the nose', caption: 'E77 driverless car — LiDAR + stereo camera sensor stack' },
+          { type: 'image', fit: 'cover', src: 'media/racing/car.webp', alt: 'E77 driverless racecar with LiDAR and stereo camera sensor stack mounted on the nose', caption: 'E77 driverless car - LiDAR + stereo camera sensor stack' },
           { type: 'image', fit: 'cover', src: 'media/racing/dv-bot.webp', alt: '1/6th scale driverless prototype with Velodyne LiDAR on a cone track', caption: '1/6th-scale prototype on a cone track, Velodyne LiDAR + stereo cams' },
           { type: 'image', fit: 'cover', src: 'media/racing/team.webp', alt: 'IITB Racing driverless team group photo', caption: 'The driverless division team' },
         ],
@@ -262,7 +262,7 @@ export const caseStudies = [
     duration: 'Apr 2025 – Jul 2025',
     guide: 'Prof. Jingjin Yu',
     summary:
-      'A Transformer-based push-prediction model and reactive RL policy for retrieving target objects from dense clutter — submitted to IROS 2026.',
+      'A Transformer-based push-prediction model and reactive RL policy for retrieving target objects from dense clutter - submitted to IROS 2026.',
     poster: { src: 'media/rutgers/figure1.webp', alt: 'CPRL method figure: reactive RL policy retrieving an object from clutter' },
     featureMedia: {
       src: 'media/rutgers/case04.mp4',
@@ -349,8 +349,8 @@ export const caseStudies = [
         media: [
           { type: 'image', src: 'media/aerial/traj-helix.webp', alt: 'Helical trajectory tracking plot', caption: 'Helical trajectory tracking' },
           { type: 'image', src: 'media/aerial/traj-line.webp', alt: 'Straight-line trajectory tracking plot', caption: 'Straight-line trajectory tracking' },
-          { type: 'image', src: 'media/aerial/quad-coords-helix.webp', alt: 'Quadcopter coordinates during helical flight', caption: 'Quadcopter coordinates — helical flight' },
-          { type: 'image', src: 'media/aerial/quad-coords-line.webp', alt: 'Quadcopter coordinates during straight-line flight', caption: 'Quadcopter coordinates — straight-line flight' },
+          { type: 'image', src: 'media/aerial/quad-coords-helix.webp', alt: 'Quadcopter coordinates during helical flight', caption: 'Quadcopter coordinates - helical flight' },
+          { type: 'image', src: 'media/aerial/quad-coords-line.webp', alt: 'Quadcopter coordinates during straight-line flight', caption: 'Quadcopter coordinates - straight-line flight' },
           { type: 'image', src: 'media/aerial/x-flight.webp', alt: 'X-axis flight response plot', caption: 'X-axis response' },
           { type: 'image', src: 'media/aerial/y-flight.webp', alt: 'Y-axis flight response plot', caption: 'Y-axis response' },
           { type: 'image', src: 'media/aerial/z-flight.webp', alt: 'Z-axis flight response plot', caption: 'Z-axis response' },
@@ -481,10 +481,10 @@ export const timeline = [
     period: '2026 – 2028',
     title: 'M.S. in Robotics',
     org: 'University of Michigan, Ann Arbor',
-    badge: 'Incoming',
+    badge: 'Current',
     kind: 'education',
     tone: 'gold',
-    note: 'Continuing autonomous-driving research — perception, planning and learning-based control.',
+    note: 'Continuing autonomous-driving research - perception, planning and learning-based control.',
   },
   {
     period: 'Jan 2025 – May 2026',

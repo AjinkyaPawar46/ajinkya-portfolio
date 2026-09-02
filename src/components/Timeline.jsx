@@ -22,7 +22,7 @@ export function Timeline() {
       <SectionHeading
         eyebrow="Journey"
         title="Where the work happened"
-        subtitle="Degrees and roles on one line — IIT Bombay through Rutgers to Michigan."
+        subtitle="Degrees and roles on one line - IIT Bombay through Rutgers to Michigan."
       />
 
       <ol className="mt-12 relative">

@@ -46,7 +46,7 @@ export function Awards() {
               {a.stat}
             </dd>
             <p className="text-sm text-zinc-400 leading-snug">
-              <span className="text-zinc-300">{a.title}</span> — {a.detail}
+              <span className="text-zinc-300">{a.title}</span> - {a.detail}
             </p>
           </div>
         ))}

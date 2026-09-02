@@ -47,7 +47,7 @@ export function Hero() {
           variants={item}
           className="font-mono text-xs sm:text-sm uppercase tracking-[0.18em] text-accent"
         >
-          {profile.name} — {profile.role}
+          {profile.name} - {profile.role}
         </motion.p>
 
         <motion.h1
@@ -59,8 +59,8 @@ export function Hero() {
 
         <motion.p variants={item} className="mt-6 text-lg text-zinc-300 max-w-2xl leading-relaxed">
           CTO of <span className="text-zinc-100 font-medium">IITB Racing Driverless</span> · Robotics
-          research at <span className="text-zinc-100 font-medium">Rutgers ARC Lab</span> · Incoming{' '}
-          <span className="text-zinc-100 font-medium">M.S. Robotics, Michigan</span>. My work spans
+          research at <span className="text-zinc-100 font-medium">Rutgers ARC Lab</span> · M.S. student in{' '}
+          <span className="text-zinc-100 font-medium">Robotics, Michigan</span>. My work spans
           NMPC, SLAM, perception and learning-based control for self-driving systems.
         </motion.p>
 

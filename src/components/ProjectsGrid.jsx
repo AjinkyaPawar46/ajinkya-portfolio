@@ -22,7 +22,7 @@ export function ProjectsGrid() {
         <SectionHeading
           eyebrow="Side builds"
           title="Key projects"
-          subtitle="Smaller systems built end to end — hardware, vision and control, outside the main research tracks."
+          subtitle="Smaller systems built end to end - hardware, vision and control, outside the main research tracks."
         />
         <ProjectFilterBar tags={TAGS} activeTag={activeTag} onSelect={setActiveTag} />
       </div>

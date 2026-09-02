@@ -65,7 +65,7 @@ export function Contact() {
           Download CV (PDF)
         </a>
         <p className="text-sm text-zinc-400">
-          Senior Undergraduate, IIT Bombay · Incoming M.S. Robotics, University of Michigan
+          M.S. Robotics, University of Michigan · IIT Bombay Alumnus
         </p>
       </div>
     </Section>

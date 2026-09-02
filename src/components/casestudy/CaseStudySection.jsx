@@ -16,7 +16,7 @@ export function CaseStudySection() {
         <SectionHeading
           eyebrow="Featured work"
           title="Three systems, built end to end"
-          subtitle="Autonomous driving, robotic manipulation and aerial robotics — each one from sensing through to control, on real hardware."
+          subtitle="Autonomous driving, robotic manipulation and aerial robotics - each one from sensing through to control, on real hardware."
         />
       </div>
 
