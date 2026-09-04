@@ -220,9 +220,9 @@ export const caseStudies = [
         heading: 'The Car',
         body: 'India\'s 1st autonomous EV racecar, integrated with vision, SLAM, path planning and controls - plus a 1/6th-scale driverless prototype used for rapid iteration on the full autonomy stack.',
         media: [
-          { type: 'image', fit: 'cover', src: 'media/racing/car.webp', alt: 'E77 driverless racecar with LiDAR and stereo camera sensor stack mounted on the nose', caption: 'E77 driverless car - LiDAR + stereo camera sensor stack' },
+          { type: 'image', fit: 'cover', src: 'media/racing/car.webp', alt: 'E03 autonomous racecar on the track at Formula Student Portugal', caption: 'The E03 driverless racecar' },
           { type: 'image', fit: 'cover', src: 'media/racing/dv-bot.webp', alt: '1/6th scale driverless prototype with Velodyne LiDAR on a cone track', caption: '1/6th-scale prototype on a cone track, Velodyne LiDAR + stereo cams' },
-          { type: 'image', fit: 'cover', src: 'media/racing/team.webp', alt: 'IITB Racing driverless team group photo', caption: 'The driverless division team' },
+          { type: 'image', fit: 'cover', src: 'media/racing/team.webp', alt: 'IITB Racing team group photo with the E03 car at Formula Student Portugal', caption: 'The whole IITB Racing team' },
         ],
       },
       {

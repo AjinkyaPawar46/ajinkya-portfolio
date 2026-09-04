@@ -129,9 +129,9 @@ export const hero = {
 export const images = [
   // --- Racing ---
   { id: 'racing-e14', src: `${DOWNLOADS}/Images/Academic/E14.jpg`, out: 'public/media/racing/e14.webp', quality: 'photo' },
-  { id: 'racing-car', src: `${DOWNLOADS}/Images/Academic/car.jpg`, out: 'public/media/racing/car.webp', quality: 'photo' },
+  { id: 'racing-car', src: `${DOWNLOADS}/D1.jpeg`, out: 'public/media/racing/car.webp', quality: 'photo' },
   { id: 'racing-dv-bot', src: `${DOWNLOADS}/Images/Academic/DV bot.jpg`, out: 'public/media/racing/dv-bot.webp', quality: 'photo' },
-  { id: 'racing-team', src: `${DOWNLOADS}/Images/Academic/racing dv team pic.jpg`, out: 'public/media/racing/team.webp', quality: 'photo' },
+  { id: 'racing-team', src: `${DOWNLOADS}/FSPT_Team.JPG`, out: 'public/media/racing/team.webp', quality: 'photo' },
   { id: 'racing-fusion-pipeline', src: `${DOWNLOADS}/Images/Academic/FusionPipeline.jpeg`, out: 'public/media/racing/fusion-pipeline.webp', quality: 'diagram' },
   { id: 'racing-stereo-flowchart', src: `${DOWNLOADS}/Images/Academic/stereoflowchart.png`, out: 'public/media/racing/stereo-flowchart.webp', quality: 'diagram' },
   { id: 'racing-nn-architecture', src: `${DOWNLOADS}/Images/Academic/NNArchitechture.png`, out: 'public/media/racing/nn-architecture.webp', quality: 'diagram' },
