@@ -3,14 +3,10 @@ import { SectionHeading } from './layout/SectionHeading';
 import { publications, profile } from '../data/content';
 import { mediaUrl } from '../lib/mediaUrl';
 
-// Only the IROS submission has a figure of its own; the arXiv entry falls
-// back to a mono initials plate rather than borrowing an unrelated image.
-const THUMBS = {
-  'Rapid Object Retrieval from Dense Clutter via Reactive RL Policies': {
-    src: 'media/rutgers/figure1.webp',
-    alt: 'Method figure: a reactive RL policy retrieving a target object from dense clutter',
-  },
-};
+// Keyed by title. Entries without a figure of their own fall back to a mono
+// "Preprint" plate rather than borrowing an unrelated image — add a figure
+// here only if it comes from that exact paper.
+const THUMBS = {};
 
 // The author list is a plain string in content.js, so pull out this site's
 // owner by surname and emphasize it — the reader should not have to hunt

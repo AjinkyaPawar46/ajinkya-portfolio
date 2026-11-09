@@ -20,9 +20,9 @@ export function ProjectsGrid() {
     <Section id="projects" band="raised">
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
         <SectionHeading
-          eyebrow="Side builds"
+          eyebrow="Builds"
           title="Key projects"
-          subtitle="Smaller systems built end to end - hardware, vision and control, outside the main research tracks."
+          subtitle="Systems built end to end - manipulation, SLAM, hardware, vision and control, from Michigan coursework and earlier side builds."
         />
         <ProjectFilterBar tags={TAGS} activeTag={activeTag} onSelect={setActiveTag} />
       </div>

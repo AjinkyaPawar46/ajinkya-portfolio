@@ -1,4 +1,4 @@
-// Generated cover art for the four projects that have no photographs.
+// Generated cover art for the projects that have no photographs.
 //
 // These are deliberately graphic — abstract marks that evoke the subject —
 // never mocked-up screenshots. Each is a plain viewBox'd SVG that inherits
@@ -186,7 +186,104 @@ function PingPongArt() {
   );
 }
 
+function ArmlabArt() {
+  // A two-link arm reaching for the block it has localized — the detect →
+  // inverse-kinematics → pick loop. The AprilTag corners mark the table frame.
+  const table = 214;
+  const blocks = [
+    { x: 310, w: 22, h: 22, o: 0.35 },
+    { x: 222, w: 20, h: 20, o: 0.35 },
+  ];
+  const target = { x: 275, y: 184 };
+
+  return (
+    <svg {...common}>
+      <rect width="400" height="250" fill="#0b0d11" />
+      {/* table plane */}
+      <path d={`M 40 ${table} H 370`} stroke="#3f3f46" strokeWidth="1" />
+      {/* tag-corner fiducials */}
+      {[60, 350].map((x) => (
+        <g key={x} fill="none" stroke="#71717a" strokeWidth="1">
+          <rect x={x - 10} y="224" width="20" height="20" />
+          <rect x={x - 5} y="229" width="10" height="10" fill="#71717a" opacity="0.5" />
+        </g>
+      ))}
+      {blocks.map((b, i) => (
+        <rect key={i} x={b.x} y={table - b.h} width={b.w} height={b.h} fill="none" stroke="#e4e4e7" strokeWidth="1" opacity={b.o} />
+      ))}
+      {/* the target block, with its detection reticle */}
+      <rect x="262" y={table - 26} width="26" height="26" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M 254 178 v -8 h 8 M 296 178 v -8 h -8 M 254 220 v 8 h 8 M 296 220 v 8 h -8" fill="none" stroke="currentColor" strokeWidth="1.1" opacity="0.7" />
+      {/* base + two links reaching the target */}
+      <rect x="86" y={table - 18} width="44" height="18" fill="#18181b" stroke="currentColor" strokeWidth="1.4" />
+      <path d={`M 108 ${table - 18} L 168 96 L ${target.x} ${target.y}`} fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" opacity="0.85" />
+      <circle cx="108" cy={table - 18} r="7" fill="#0b0d11" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="168" cy="96" r="6" fill="#0b0d11" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx={target.x} cy={target.y} r="4" fill="currentColor" />
+    </svg>
+  );
+}
+
+function BotlabArt() {
+  // An occupancy grid with a maze wall, a planned A* path and the LiDAR
+  // fan that built the map.
+  const cols = 16;
+  const rows = 10;
+  const cell = 22;
+  const ox = 24;
+  const oy = 15;
+  const walls = new Set([
+    '4-0', '4-1', '4-2', '4-3', '4-4', '4-5',
+    '9-4', '9-5', '9-6', '9-7', '9-8', '9-9',
+    '12-0', '12-1', '12-2', '12-3', '12-4', '12-5',
+  ]);
+  const path = [
+    [1, 8], [2, 8], [3, 8], [4, 8], [5, 8], [6, 7], [7, 6], [7, 5], [7, 4], [8, 3], [9, 3], [10, 3], [11, 3], [11, 4], [11, 5], [11, 6], [11, 7], [12, 7], [13, 7],
+  ];
+  const pt = ([c, r]) => `${ox + c * cell + cell / 2},${oy + r * cell + cell / 2}`;
+  const robot = path[0];
+  const [rx, ry] = pt(robot).split(',').map(Number);
+
+  return (
+    <svg {...common}>
+      <rect width="400" height="250" fill="#0b0d11" />
+      {Array.from({ length: cols * rows }, (_, i) => {
+        const c = i % cols;
+        const r = Math.floor(i / cols);
+        const wall = walls.has(`${c}-${r}`);
+        return (
+          <rect
+            key={i}
+            x={ox + c * cell}
+            y={oy + r * cell}
+            width={cell}
+            height={cell}
+            fill={wall ? '#e4e4e7' : 'none'}
+            opacity={wall ? 0.28 : 1}
+            stroke="#27272a"
+            strokeWidth="0.6"
+          />
+        );
+      })}
+      {/* LiDAR fan from the robot */}
+      <g stroke="currentColor" strokeWidth="0.7" opacity="0.3">
+        {[-34, -17, 0, 17, 34].map((deg) => {
+          const a = (deg * Math.PI) / 180;
+          return <line key={deg} x1={rx} y1={ry} x2={rx + Math.cos(a) * 95} y2={ry - Math.sin(a) * 95} />;
+        })}
+      </g>
+      {/* planned path */}
+      <polyline points={path.map(pt).join(' ')} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={rx} cy={ry} r="6" fill="currentColor" />
+      <circle cx={rx} cy={ry} r="11" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4" />
+      <circle cx={pt(path[path.length - 1]).split(',')[0]} cy={pt(path[path.length - 1]).split(',')[1]} r="5" fill="none" stroke="#f59e0b" strokeWidth="1.6" />
+    </svg>
+  );
+}
+
 const ART = {
+  armlab: ArmlabArt,
+  botlab: BotlabArt,
   startrack: StarTrackArt,
   bokeh: BokehArt,
   layouts: LayoutsArt,

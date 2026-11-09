@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useActiveSection } from '../../hooks/useActiveSection';
 import { MobileNav } from './MobileNav';
 import cvPDF from '../../assets/Ajinkya_Pawar_CV.pdf';
+import resumePDF from '../../assets/Ajinkya_Pawar_Resume.pdf';
 
 const NAV_ITEMS = [
   { id: 'work', label: 'Work' },
@@ -58,6 +59,13 @@ export function Header() {
               className="px-3.5 py-1.5 rounded-lg border border-line-strong text-sm font-medium text-zinc-200 hover:border-accent hover:text-accent transition-colors"
             >
               CV
+            </a>
+            <a
+              href={resumePDF}
+              download
+              className="px-3.5 py-1.5 rounded-lg border border-line-strong text-sm font-medium text-zinc-200 hover:border-accent hover:text-accent transition-colors"
+            >
+              Resume
             </a>
             <button
               type="button"

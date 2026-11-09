@@ -1,6 +1,7 @@
 import { Section } from './layout/Section';
 import { profile } from '../data/content';
 import cvPDF from '../assets/Ajinkya_Pawar_CV.pdf';
+import resumePDF from '../assets/Ajinkya_Pawar_Resume.pdf';
 
 const ICONS = {
   email: 'M3 7l9 6 9-6M3 7v10a1 1 0 001 1h16a1 1 0 001-1V7a1 1 0 00-1-1H4a1 1 0 00-1 1z',
@@ -63,6 +64,13 @@ export function Contact() {
           className="px-5 py-2.5 rounded-lg bg-accent text-ink-950 hover:bg-accent/90 font-semibold shadow-glow transition-colors"
         >
           Download CV (PDF)
+        </a>
+        <a
+          href={resumePDF}
+          download
+          className="px-5 py-2.5 rounded-lg border border-line-strong text-zinc-100 hover:border-accent hover:text-accent font-medium transition-colors"
+        >
+          Download Resume (PDF)
         </a>
         <p className="text-sm text-zinc-400">
           M.S. Robotics, University of Michigan · IIT Bombay Alumnus

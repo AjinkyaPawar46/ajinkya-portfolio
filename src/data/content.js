@@ -8,8 +8,8 @@ export const profile = {
   links: {
     github: 'https://github.com/AjinkyaPawar46',
     linkedin: 'https://www.linkedin.com/in/ajinkya-pawar-ap4630/',
-    email: 'ajinkya4630@gmail.com',
-    phone: '+91 9920073742',
+    email: 'ajinkyaa@umich.edu',
+    phone: '+1 (609) 786-0840',
   },
 };
 
@@ -74,18 +74,18 @@ export const achievements = [
 export const impactStats = [
   { value: '1st', suffix: 'overall', label: "FS Portugal '26 - Driverless & EV", tone: 'gold' },
   { value: '4th', suffix: '/ 25', label: "Formula Student AI '25, UK", tone: 'gold' },
-  { value: '100+', label: 'Students led as CTO', tone: 'gold' },
+  { value: '100+', label: 'Student team, autonomy division led', tone: 'gold' },
   { value: '15%', label: 'NMPC lap-time gain', tone: 'accent' },
-  { value: '100→7', suffix: 'ms', label: 'Detection latency, TensorRT', tone: 'accent' },
-  { value: '+40%', label: "Push prediction accuracy, IROS '26", tone: 'accent' },
+  { value: '85→18', suffix: 'ms', label: 'End-to-end latency, perception stack', tone: 'accent' },
+  { value: '+40%', label: 'Push-prediction accuracy, Transformer', tone: 'accent' },
 ];
 
 export const publications = [
   {
-    authors: 'K. Boyalakuntla, A. Pawar, A. Boluarias, J. Yu',
-    title: 'Rapid Object Retrieval from Dense Clutter via Reactive RL Policies',
-    venue: 'Submitted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2026)',
-    link: 'https://cprl-26.github.io',
+    authors: 'K. Boyalakuntla, A. Pawar, et al.',
+    title: 'Plan-Conditioned Imitation for Robust Object Retrieval under Self-Occlusion in Dense Clutter',
+    venue: 'ICRA 2027 (under review)',
+    link: 'https://arxiv.org/abs/2609.38857',
   },
   {
     authors: 'Y. Rampuria et al.',
@@ -97,12 +97,12 @@ export const publications = [
 
 // The featured/spotlight section — kept structurally separate from `projects`.
 export const technicalHighlight = {
-  role: 'Chief Autonomous Systems Officer & Deputy Team Leader',
-  org: 'IITB Racing',
+  role: 'Deputy Team Lead & Chief of Autonomous Systems',
+  org: 'IITB Racing Driverless',
   duration: 'Mar 2023 – Jul 2026',
   guide: 'Prof. Archak Mittal, Civil Engineering, IIT Bombay',
   summary:
-    "Leading the Level-4 autonomous vehicle division in a team of 100+ students, representing India as the 1st and only Indian self-driving EV racecar contingent among 80+ teams at IMechE Formula Student AI, United Kingdom.",
+    "Led the Level-4 autonomous vehicle division in a team of 100+ students, representing India as the 1st and only Indian self-driving EV racecar contingent among 80+ teams at the Formula Student competitions internationally.",
   impact: [
     "Secured 1st place overall at Formula Student Portugal '26 - winning both the Driverless Cup and the EV Category",
     "Secured 1st place in the Engineering Design Presentation at FSPT '26, evaluated by AV industry experts",
@@ -122,9 +122,11 @@ export const technicalHighlight = {
     'Built a 1/6th scale driverless racecar prototype integrating an STM32 microcontroller with CAN communication',
   ],
   computerVision: [
+    'Developed a LiDAR-camera fusion pipeline for enhanced perception performance in the dynamic events',
+    'Reduced end-to-end latency from 85 ms to 18 ms by eliminating CPU-GPU copies, multithreading and concurrency',
+    'Optimized YOLOv11 detection to 3.2 ms/frame via TensorRT inference on Jetson, an 8.7x speedup over PyTorch',
+    'Built a five-stage LiDAR-only pipeline: Patchwork++ ground removal, DBSCAN, PCA, intensity filtering and ONNX classification',
     'Achieved 22% higher accuracy with a novel depth estimation deep neural network for monocular vision',
-    'Reduced object detection and classification latency from 100ms to 7ms with a C++ TensorRT engine for YOLOv5',
-    'Implemented LiDAR-based perception with ground removal, DBSCAN clustering and Camera-LiDAR transformation',
   ],
 };
 
@@ -136,7 +138,7 @@ export const researchExperience = {
   guide: 'Prof. Jingjin Yu',
   duration: 'Apr 2025 – Jul 2025',
   bullets: [
-    'Preparing a manuscript on "Learning Continuous Non-Prehensile Manipulation for Object Retrieval" from clutter for submission to IROS 2026',
+    'Contributing author on "Plan-Conditioned Imitation for Robust Object Retrieval under Self-Occlusion in Dense Clutter", under review at ICRA 2027',
     'Replaced the MLP-based push interaction prediction architecture with a Transformer model, improving accuracy by over 40% and enabling robust generalization to diverse cluttered scenes',
     'Developed a baseline spiral push policy for efficient obstacle clearance and target retrieval, validated through extensive simulations in Isaac Gym and real-world experiments',
     'Performed extensive hyperparameter tuning and ablation studies to evaluate architecture design choices',
@@ -151,15 +153,15 @@ export const aerialRoboticsThesis = {
   role: 'Undergraduate Thesis',
   org: 'INDUS Lab, Mechanical Engineering, IIT Bombay',
   guide: 'Prof. Vivek Sangwan',
-  duration: 'Jan 2025 – May 2026',
+  duration: 'Aug 2025 – May 2026',
   bullets: [
     'Development and control of an autonomous quadcopter with an under-actuated linked manipulator using ArduPilot',
-    'Achieved <2% steady-state error and <5s settling time using precise PID tuning for hover and helical trajectories',
+    'Designed a cascaded PID controller achieving <2% steady-state error and <5s settling time for hover and helical trajectories',
     'Optimized controller gains via MATLAB / Gazebo simulations for outer-loop control with a 10x faster attitude inner-loop',
     'Implemented 3D path planning for drones using splines, optimizing trajectory generation in complex environments',
     'Utilized a VICON camera motion capture system for high-accuracy indoor localization',
     'Redesigned the quadcopter chassis using lightweight carbon-fiber composites, decreasing total weight by 10% and reducing vibration-induced noise',
-    'Implementing end-effector contact force control for unmanned applications in disaster management',
+    'Worked on end-effector contact force control for unmanned applications in disaster management',
   ],
 };
 
@@ -176,7 +178,7 @@ export const professionalExperience = {
 // Media-rich case studies, rendered as cards on the page that open into a
 // full-screen modal. Order is deliberate: Racing leads (autonomous driving +
 // leadership + externally validated), Rutgers second (strongest pure-research
-// credential — IROS submission, live project page), Aerial thesis third
+// credential — ICRA 2027 paper under review, live project page), Aerial thesis third
 // (rich media, but overlaps Racing on controls and is promoted out of
 // BeyondTheLab mainly for its thesis status). `detail` points at the
 // existing bullet-list exports above rather than duplicating their copy.
@@ -191,12 +193,12 @@ export const caseStudies = [
   {
     id: 'iitb-racing',
     title: "India's First Autonomous Racecar",
-    role: 'Chief Autonomous Systems Officer & Deputy Team Leader',
-    org: 'IITB Racing',
+    role: 'Deputy Team Lead & Chief of Autonomous Systems',
+    org: 'IITB Racing Driverless',
     duration: 'Mar 2023 – Jul 2026',
     guide: 'Prof. Archak Mittal, Civil Engineering, IIT Bombay',
     summary:
-      "Leading the Level-4 autonomous vehicle division building India's first autonomous EV racecar - NMPC, SLAM, perception and path planning. Overall Champions at Formula Student Portugal '26 in both the Driverless and EV categories.",
+      "Led the Level-4 autonomous vehicle division building India's first autonomous EV racecar - NMPC, SLAM, perception and path planning. Overall Champions at Formula Student Portugal '26 in both the Driverless and EV categories.",
     poster: { src: 'media/racing/e14.webp', alt: 'IITB Racing E11 electric racecar in the pit lane at Formula Student AI, United Kingdom' },
     // The clip that autoplays inline in this case study's feature band.
     // Distinct from `poster` (still used as the modal header image) and from
@@ -211,9 +213,9 @@ export const caseStudies = [
       { label: "FS Portugal '26 - Driverless + EV", value: '1st', tone: 'gold' },
       { label: 'Lap-time gain', value: '15%' },
       { label: 'Cross-track error', value: '-16%' },
-      { label: 'Detection latency', value: '100ms → 7ms' },
+      { label: 'End-to-end latency', value: '85ms → 18ms' },
     ],
-    tech: ['NMPC', 'ROS', 'CARLA', 'RRT*', 'LiDAR', 'TensorRT', 'YOLOv5'],
+    tech: ['NMPC', 'ROS', 'CARLA', 'RRT*', 'LiDAR', 'TensorRT', 'YOLOv11', 'Jetson'],
     detail: technicalHighlight,
     sections: [
       {
@@ -238,7 +240,7 @@ export const caseStudies = [
       },
       {
         heading: 'Perception',
-        body: 'A ROS-integrated perception stack fusing LiDAR, camera and IMU: ground removal, DBSCAN clustering, Camera-LiDAR transformation, and a monocular depth estimation network alongside a TensorRT-optimized YOLOv5 cone detector.',
+        body: 'A ROS-integrated perception stack fusing LiDAR, camera and IMU: a LiDAR-camera fusion pipeline, a five-stage LiDAR-only pipeline (Patchwork++, DBSCAN, PCA, intensity filtering, ONNX classification), and a YOLOv11 cone detector at 3.2 ms/frame via TensorRT on Jetson - cutting end-to-end latency from 85 ms to 18 ms.',
         media: [
           { type: 'video', src: 'media/racing/bot-run.mp4', poster: 'media/racing/bot-run-poster.jpg', alt: 'Prototype cone-track run using the perception + planning stack', caption: 'Prototype run on the cone track' },
           { type: 'image', src: 'media/racing/fusion-pipeline.webp', alt: 'Sensor fusion pipeline diagram', caption: 'LiDAR–camera sensor fusion pipeline' },
@@ -262,7 +264,7 @@ export const caseStudies = [
     duration: 'Apr 2025 – Jul 2025',
     guide: 'Prof. Jingjin Yu',
     summary:
-      'A Transformer-based push-prediction model and reactive RL policy for retrieving target objects from dense clutter - submitted to IROS 2026.',
+      'A Transformer-based push-prediction model and spiral push policy for retrieving target objects from dense clutter, validated in Isaac Gym and on a UR5e. Contributing author on a paper under review at ICRA 2027.',
     poster: { src: 'media/rutgers/figure1.webp', alt: 'CPRL method figure: reactive RL policy retrieving an object from clutter' },
     featureMedia: {
       src: 'media/rutgers/case04.mp4',
@@ -271,7 +273,7 @@ export const caseStudies = [
     },
     metrics: [
       { label: 'Push-prediction accuracy', value: '+40%' },
-      { label: 'Venue', value: 'IROS 2026' },
+      { label: 'Under review', value: 'ICRA 2027' },
       { label: 'Platform', value: '6-DoF UR5e' },
     ],
     tech: ['PyTorch', 'Transformer', 'Reinforcement Learning', 'Isaac Gym', 'UR5e'],
@@ -304,7 +306,7 @@ export const caseStudies = [
     role: 'Undergraduate Thesis',
     org: 'INDUS Lab, Mechanical Engineering, IIT Bombay',
     orgShort: 'INDUS Lab, IIT Bombay',
-    duration: 'Jan 2025 – May 2026',
+    duration: 'Aug 2025 – May 2026',
     guide: 'Prof. Vivek Sangwan',
     summary:
       'Design and control of an autonomous quadcopter with an under-actuated linked manipulator, for contact-force applications like debris removal and door/window opening in disaster response.',
@@ -345,7 +347,7 @@ export const caseStudies = [
       },
       {
         heading: 'Control & Trajectories',
-        body: 'Outer-loop control tuned via MATLAB/Gazebo simulation with a 10x faster attitude inner-loop; 3D spline-based path planning for helical and straight-line trajectories.',
+        body: 'A cascaded PID controller with outer-loop gains tuned via MATLAB/Gazebo simulation and a 10x faster attitude inner-loop; 3D spline-based path planning for helical and straight-line trajectories.',
         media: [
           { type: 'image', src: 'media/aerial/traj-helix.webp', alt: 'Helical trajectory tracking plot', caption: 'Helical trajectory tracking' },
           { type: 'image', src: 'media/aerial/traj-line.webp', alt: 'Straight-line trajectory tracking plot', caption: 'Straight-line trajectory tracking' },
@@ -370,6 +372,34 @@ export const PROJECT_TAGS = ['Robotics', 'Computer Vision', 'ML & Data Science']
 // never dressed up as a real screenshot. `metric` is the one number pulled
 // out large on the card.
 export const projects = [
+  {
+    title: 'Vision-Guided Robot Arm Manipulation (Armlab)',
+    duration: 'ROB 550, UMich · Sep 2026 – Present',
+    tag: 'Robotics',
+    art: 'armlab',
+    metric: { value: '6-DOF', label: 'Lite 6 pick-and-place' },
+    tech: ['OpenCV', 'AprilTags', 'solvePnP', 'Kinematics', 'Gauss-Newton IK'],
+    bullets: [
+      'Developed the block detector: tag-homography top-down warp, plane-fit depth flattening and height thresholding',
+      'Extracted block centroids (image moments), orientation (minAreaRect) and HSV color and size labels from contours',
+      'Calibrated extrinsics from AprilTags (solvePnP) and mapped pixel plus depth to world coordinates for pick locations',
+      'Implemented Lite 6 forward kinematics (DH, product of exponentials) and geometric plus damped Gauss-Newton IK',
+      'Integrated detection and inverse kinematics into a click-to-pick-and-place state machine on the 6-DOF arm',
+    ],
+  },
+  {
+    title: 'Autonomous Mobile Robot Navigation (Botlab)',
+    duration: 'ROB 550, UMich · Sep 2026 – Present',
+    tag: 'Robotics',
+    art: 'botlab',
+    metric: { value: 'SLAM', label: 'mapping + localization' },
+    tech: ['SLAM', 'Particle filter', 'A*', 'AprilTags', 'PID'],
+    bullets: [
+      'Built LiDAR occupancy-grid mapping (deskewing, Bresenham, log-odds) and particle-filter localization for SLAM',
+      'Calibrated the MBot camera for rectified-image AprilTag detection and implemented A* planning for maze navigation',
+      'Tuned PID velocity control, implemented gyrodometry and wrote a rotate-translate-rotate path-tracking controller',
+    ],
+  },
   {
     title: 'StarTrack: Arduino-based Star Tracker',
     duration: 'Feb 2025 – Apr 2025',
@@ -429,9 +459,9 @@ export const projects = [
 ];
 
 export const skills = {
-  languages: ['Python', 'C', 'C++', 'Java', 'JSON', 'HTML', 'LaTeX', 'JavaScript', 'Excel', '8085 Assembly'],
-  packages: ['PyTorch', 'Pandas', 'TensorRT', 'Keras', 'Numpy', 'OpenCV', 'PyGame', 'SciPy', 'Casadi'],
-  frameworks: ['ROS', 'GitHub', 'CUDA', 'mavros', 'Pixhawk', 'Django', 'Angular'],
+  languages: ['Python', 'C++', 'C', 'CUDA', 'MATLAB', 'Java', 'JavaScript', 'LaTeX', 'HTML', 'JSON', '8085 Assembly'],
+  packages: ['PyTorch', 'TensorRT', 'OpenCV', 'CasADi', 'Keras', 'Numpy', 'SciPy', 'Pandas', 'PyGame'],
+  frameworks: ['ROS', 'CARLA', 'Gazebo', 'Isaac Gym', 'mavros', 'Pixhawk', 'GitHub', 'Django', 'Angular'],
   humanLanguages: ['English', 'Hindi', 'Marathi', 'Sanskrit'],
 };
 
@@ -484,10 +514,10 @@ export const timeline = [
     badge: 'Current',
     kind: 'education',
     tone: 'gold',
-    note: 'Continuing autonomous-driving research - perception, planning and learning-based control.',
+    note: 'Coursework in Self Driving Cars, Mathematics for Robotics and Robotic Systems Lab (ROB 550) - building vision-guided manipulation and SLAM-based navigation stacks.',
   },
   {
-    period: 'Jan 2025 – May 2026',
+    period: 'Aug 2025 – May 2026',
     title: 'Contact Force Control of Aerial Manipulators',
     org: 'INDUS Lab, Mechanical Engineering, IIT Bombay',
     badge: 'Undergraduate Thesis',
@@ -500,16 +530,16 @@ export const timeline = [
     period: 'Apr 2025 – Jul 2025',
     title: 'Robotics Research Intern',
     org: 'ARC Lab, Computer Science, Rutgers University–New Brunswick',
-    badge: 'IROS 2026 submission',
+    badge: 'ICRA 2027 under review',
     kind: 'research',
     tone: 'accent',
     guide: 'Prof. Jingjin Yu',
-    note: 'Replaced an MLP push-interaction predictor with a Transformer, improving accuracy by over 40% on a 6-DoF UR5e.',
+    note: 'Replaced an MLP push-interaction predictor with a Transformer, improving accuracy by over 40% and validating on a 6-DoF UR5e.',
   },
   {
     period: 'Mar 2023 – Jul 2026',
-    title: 'Chief Autonomous Systems Officer & Deputy Team Leader',
-    org: 'IITB Racing',
+    title: 'Deputy Team Lead & Chief of Autonomous Systems',
+    org: 'IITB Racing Driverless',
     badge: '1st overall, FS Portugal ’26',
     kind: 'role',
     tone: 'gold',

@@ -3,6 +3,7 @@ import { HeroVideo } from './HeroVideo';
 import { profile, researchInterests } from '../data/content';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import cvPDF from '../assets/Ajinkya_Pawar_CV.pdf';
+import resumePDF from '../assets/Ajinkya_Pawar_Resume.pdf';
 
 const container = {
   hidden: {},
@@ -58,7 +59,8 @@ export function Hero() {
         </motion.h1>
 
         <motion.p variants={item} className="mt-6 text-lg text-zinc-300 max-w-2xl leading-relaxed">
-          CTO of <span className="text-zinc-100 font-medium">IITB Racing Driverless</span> · Robotics
+          Deputy Team Lead &amp; Chief of Autonomous Systems at{' '}
+          <span className="text-zinc-100 font-medium">IITB Racing Driverless</span> · Robotics
           research at <span className="text-zinc-100 font-medium">Rutgers ARC Lab</span> · M.S. student in{' '}
           <span className="text-zinc-100 font-medium">Robotics, Michigan</span>. My work spans
           NMPC, SLAM, perception and learning-based control for self-driving systems.
@@ -88,6 +90,13 @@ export function Hero() {
             className="px-5 py-2.5 rounded-lg border border-line-strong text-zinc-100 hover:border-accent hover:text-accent bg-ink-950/40 backdrop-blur-sm font-medium transition-colors"
           >
             Download CV
+          </a>
+          <a
+            href={resumePDF}
+            download
+            className="px-5 py-2.5 rounded-lg border border-line-strong text-zinc-100 hover:border-accent hover:text-accent bg-ink-950/40 backdrop-blur-sm font-medium transition-colors"
+          >
+            Download Resume
           </a>
         </motion.div>
       </motion.div>
